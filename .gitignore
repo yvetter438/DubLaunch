@@ -1,0 +1,82 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# prisma
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# uploads
+/public/uploads
+
+# SECURITY: Database and SQL files (contains sensitive structure)
+*.sql
+database-setup.sql
+launches-table.sql
+profiles-table.sql
+votes-table.sql
+comments-table.sql
+forum-tables.sql
+add-slug-to-launches.sql
+fix-rls-policies.sql
+fix-forum-rls-policies.sql
+check-database-state.sql
+test-forum-access.sql
+debug-*.sql
+
+# SECURITY: Environment and setup files
+ENV_SETUP.md
+
+# SECURITY: Debug and test directories
+/app/debug*
+/app/leaderboard-simple
+/app/forums-simple
+/app/test-forum
+/app/profile/simple
+
+# SECURITY: Development artifacts
+debug-*.js
+test-*.js
+*.log
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db

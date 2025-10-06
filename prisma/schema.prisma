@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Profile model linked to Supabase Auth users
+// The id here matches auth.users.id from Supabase
+model Profile {
+  id        String   @id @db.Uuid // Links to Supabase auth.users.id
+  username  String   @unique
+  name      String?
+  uwNetId   String?  @unique // UW NetID
+  major     String?
+  year      String?  // Freshman, Sophomore, Junior, Senior, Graduate
+  bio       String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  launches       Launch[]
+  votes          Vote[]
+  comments       Comment[]
+  forumPosts     ForumPost[]
+  forumComments  ForumComment[]
+
+  @@map("profiles")
+}
+
+model Launch {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  description String
+  website     String?
+  logo        String?
+  gallery     String?  // JSON array of image URLs
+  category    String
+  tags        String?  // JSON array of tags
+  votes       Int      @default(0)
+  views       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  authorId    String   @db.Uuid
+  author      Profile  @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  voteRecords Vote[]
+  comments    Comment[]
+
+  @@map("launches")
+}
+
+model Vote {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now())
+
+  // Relations
+  profileId String   @db.Uuid
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  launchId  String   @db.Uuid
+  launch    Launch   @relation(fields: [launchId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, launchId])
+  @@map("votes")
+}
+
+model Comment {
+  id        String   @id @default(uuid()) @db.Uuid
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  authorId String   @db.Uuid
+  author   Profile  @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  launchId String   @db.Uuid
+  launch   Launch   @relation(fields: [launchId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model ForumPost {
+  id        String   @id @default(uuid()) @db.Uuid
+  title     String
+  content   String
+  category  String   // General, Tech, Entrepreneurship, etc.
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  authorId String          @db.Uuid
+  author   Profile         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments ForumComment[]
+
+  @@map("forum_posts")
+}
+
+model ForumComment {
+  id        String   @id @default(uuid()) @db.Uuid
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  authorId String    @db.Uuid
+  author   Profile   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  postId   String    @db.Uuid
+  post     ForumPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("forum_comments")
+}
