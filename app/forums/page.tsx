@@ -181,7 +181,7 @@ export default function ForumsPage() {
       })
 
       // Update categories with post counts
-      const updatedCategories = processedCategories.map(category => ({
+      const updatedCategories = processedCategories.map((category: any) => ({
         ...category,
         posts_count: categoryCounts[category.id] || 0
       }))
