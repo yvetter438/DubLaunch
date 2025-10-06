@@ -98,7 +98,7 @@ export default function ForumsPage() {
       }
 
       // Process categories data (post counts will be calculated separately)
-      const processedCategories = categoriesResult.data?.map(category => ({
+      const processedCategories = categoriesResult.data?.map((category: any) => ({
         id: category.id,
         name: category.name,
         description: category.description,
@@ -146,7 +146,7 @@ export default function ForumsPage() {
       // Fetch related data separately for each post
       console.log('Fetching related data for posts...')
       const enrichedPosts = await Promise.all(
-        postsData.map(async (post) => {
+        postsData.map(async (post: any) => {
           // Fetch category data
           const { data: categoryData } = await supabase
             .from('forum_categories')
