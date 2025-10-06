@@ -221,7 +221,11 @@ export default function MyProfilePage() {
       return
     }
 
-    setVoting(prev => new Set([...prev, launchId]))
+    setVoting(prev => {
+      const newSet = new Set(prev)
+      newSet.add(launchId)
+      return newSet
+    })
 
     try {
       const hasVoted = userVotes.has(launchId)
@@ -260,7 +264,11 @@ export default function MyProfilePage() {
 
         if (error) throw error
 
-        setUserVotes(prev => new Set([...prev, launchId]))
+        setUserVotes(prev => {
+          const newSet = new Set(prev)
+          newSet.add(launchId)
+          return newSet
+        })
 
         setLaunches(prev => prev.map(launch => 
           launch.id === launchId 
