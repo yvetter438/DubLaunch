@@ -24,8 +24,10 @@ interface Launch {
   id: string
   name: string
   description: string
+  tagline: string
   website_url: string
   logo_url: string
+  thumbnail_url: string
   votes_count: number
   created_at: string
   slug: string
