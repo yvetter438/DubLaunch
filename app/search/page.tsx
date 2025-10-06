@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Header from '@/components/Header'
 import Link from 'next/link'
@@ -22,7 +22,7 @@ interface SearchResult {
   slug?: string
 }
 
-export default function SearchPage() {
+function SearchPageContent() {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchResult[]>([])
   const [loading, setLoading] = useState(false)
@@ -379,5 +379,13 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchPageContent />
+    </Suspense>
   )
 }

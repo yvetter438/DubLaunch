@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { 
@@ -63,7 +63,7 @@ const SORT_OPTIONS = [
   { value: 'trending', label: 'Trending', icon: Star }
 ]
 
-export default function DiscoverPage() {
+function DiscoverPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   
@@ -645,5 +645,13 @@ export default function DiscoverPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function DiscoverPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DiscoverPageContent />
+    </Suspense>
   )
 }
