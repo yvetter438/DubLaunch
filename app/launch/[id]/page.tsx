@@ -14,6 +14,7 @@ import toast from 'react-hot-toast'
 interface Launch {
   id: string
   name: string
+  slug: string
   tagline: string
   description: string
   website_url: string

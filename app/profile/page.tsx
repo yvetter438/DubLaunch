@@ -28,6 +28,7 @@ interface Launch {
   logo_url: string
   votes_count: number
   created_at: string
+  slug: string
 }
 
 export default function MyProfilePage() {

@@ -28,6 +28,7 @@ interface Launch {
   votes_count: number
   created_at: string
   user_id: string
+  slug: string
   profiles?: {
     display_name: string
     username: string
