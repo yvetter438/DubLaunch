@@ -252,20 +252,9 @@ export default function ForumsPage() {
       
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">Community Forums</h1>
-            <p className="text-gray-600">Join the conversation with the UW community</p>
-          </div>
-          <div className="mt-4 sm:mt-0">
-            <Link
-              href="/forums/new-post"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
-            >
-              <Plus className="w-4 h-4" />
-              New Post
-            </Link>
-          </div>
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Community Forums</h1>
+          <p className="text-gray-600">Join the conversation with the UW community</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
