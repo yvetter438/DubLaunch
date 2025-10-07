@@ -84,14 +84,14 @@ export default function RegisterPage() {
                   Username
                 </label>
                 <div className="relative">
-                  <AtSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <AtSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="username"
                     name="username"
                     type="text"
                     autoComplete="username"
                     required
-                    className="input-field pl-12"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
                     placeholder="johndoe"
                     value={formData.username}
                     onChange={handleChange}
@@ -107,14 +107,14 @@ export default function RegisterPage() {
                   Display Name
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="displayName"
                     name="displayName"
                     type="text"
                     autoComplete="name"
                     required
-                    className="input-field pl-12"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
                     placeholder="John Doe"
                     value={formData.displayName}
                     onChange={handleChange}
@@ -130,14 +130,14 @@ export default function RegisterPage() {
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="email"
                     name="email"
                     type="email"
                     autoComplete="email"
                     required
-                    className="input-field pl-12"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
                     placeholder="your.email@uw.edu"
                     value={formData.email}
                     onChange={handleChange}
@@ -150,14 +150,14 @@ export default function RegisterPage() {
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="password"
                     name="password"
                     type={showPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     required
-                    className="input-field pl-12 pr-12"
+                    className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
                     placeholder="Create a strong password"
                     value={formData.password}
                     onChange={handleChange}
@@ -177,14 +177,14 @@ export default function RegisterPage() {
                   Confirm Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="confirmPassword"
                     name="confirmPassword"
                     type={showConfirmPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     required
-                    className="input-field pl-12 pr-12"
+                    className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
                     placeholder="Confirm your password"
                     value={formData.confirmPassword}
                     onChange={handleChange}
