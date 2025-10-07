@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Code, BookOpen, Utensils, Heart, Gamepad2, Palette, Music, Camera } from 'lucide-react'
+import { Code, BookOpen, Utensils, Heart, Gamepad2, Palette, Music, Camera, Lock } from 'lucide-react'
 
 const categories = [
   {
@@ -64,10 +64,18 @@ const categories = [
 
 export default function Categories() {
   return (
-    <div className="card">
+    <div className="card relative overflow-hidden">
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center">
+        <div className="text-center px-4">
+          <Lock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+          <h4 className="text-sm font-semibold text-gray-900 mb-1">Coming Soon</h4>
+          <p className="text-xs text-gray-600">Browse by category</p>
+        </div>
+      </div>
+
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Browse Categories</h3>
       
-      <div className="space-y-2">
+      <div className="space-y-2 opacity-30">
         {categories.map((category) => {
           const IconComponent = category.icon
           return (

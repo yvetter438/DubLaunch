@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Heart, Eye, MessageCircle, ExternalLink, Calendar } from 'lucide-react'
+import { Heart, Eye, MessageCircle, ExternalLink, Calendar, Lock } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
 
 // Mock data - this will be replaced with actual API calls
@@ -91,12 +91,24 @@ export default function FeaturedLaunches() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">Today's Top Launches</h2>
-        <Link href="/launches" className="text-uw-purple hover:text-uw-purple/80 font-medium">
+        <Link href="/discover" className="text-uw-purple hover:text-uw-purple/80 font-medium">
           View all →
         </Link>
       </div>
 
-      <div className="space-y-4">
+      {/* Locked State - Coming Soon */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 rounded-xl flex items-center justify-center">
+          <div className="text-center">
+            <Lock className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Coming Soon!</h3>
+            <p className="text-sm text-gray-600 max-w-xs mx-auto">
+              This feature will showcase today's hottest launches from the UW community
+            </p>
+          </div>
+        </div>
+
+      <div className="space-y-4 opacity-30">
         {launches.map((launch, index) => (
           <div key={launch.id} className="card hover:shadow-md transition-shadow">
             <div className="flex items-start space-x-4">
@@ -195,6 +207,7 @@ export default function FeaturedLaunches() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   )

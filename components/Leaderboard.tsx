@@ -1,6 +1,6 @@
 'use client'
 
-import { Trophy, TrendingUp, Users, Star } from 'lucide-react'
+import { Trophy, TrendingUp, Users, Star, Lock } from 'lucide-react'
 import Link from 'next/link'
 
 // Mock data for leaderboard
@@ -74,14 +74,22 @@ const topMakers = [
 export default function Leaderboard() {
   return (
     <div className="space-y-6">
-      {/* Top Launches */}
-      <div className="card">
+      {/* Top Launches - Locked */}
+      <div className="card relative overflow-hidden">
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center">
+          <div className="text-center px-4">
+            <Lock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Coming Soon</h4>
+            <p className="text-xs text-gray-600">Top launches will appear here</p>
+          </div>
+        </div>
+
         <div className="flex items-center space-x-2 mb-4">
           <Trophy className="w-5 h-5 text-uw-gold" />
           <h3 className="text-lg font-semibold text-gray-900">Top Launches</h3>
         </div>
         
-        <div className="space-y-3">
+        <div className="space-y-3 opacity-30">
           {mockLeaderboard.map((launch) => (
             <div key={launch.id} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
@@ -117,14 +125,22 @@ export default function Leaderboard() {
         </div>
       </div>
 
-      {/* Top Makers */}
-      <div className="card">
+      {/* Top Makers - Locked */}
+      <div className="card relative overflow-hidden">
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center">
+          <div className="text-center px-4">
+            <Lock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Coming Soon</h4>
+            <p className="text-xs text-gray-600">Top makers will appear here</p>
+          </div>
+        </div>
+
         <div className="flex items-center space-x-2 mb-4">
           <Users className="w-5 h-5 text-uw-purple" />
           <h3 className="text-lg font-semibold text-gray-900">Top Makers</h3>
         </div>
         
-        <div className="space-y-3">
+        <div className="space-y-3 opacity-30">
           {topMakers.map((maker, index) => (
             <div key={maker.id} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-gradient-to-r from-uw-purple to-uw-gold text-white">
@@ -160,14 +176,22 @@ export default function Leaderboard() {
         </div>
       </div>
 
-      {/* Quick Stats */}
-      <div className="card">
+      {/* Quick Stats - Locked */}
+      <div className="card relative overflow-hidden">
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center">
+          <div className="text-center px-4">
+            <Lock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Coming Soon</h4>
+            <p className="text-xs text-gray-600">Weekly stats will appear here</p>
+          </div>
+        </div>
+
         <div className="flex items-center space-x-2 mb-4">
           <TrendingUp className="w-5 h-5 text-green-600" />
           <h3 className="text-lg font-semibold text-gray-900">This Week</h3>
         </div>
         
-        <div className="space-y-3">
+        <div className="space-y-3 opacity-30">
           <div className="flex justify-between items-center">
             <span className="text-sm text-gray-600">New launches</span>
             <span className="text-sm font-semibold text-gray-900">12</span>
