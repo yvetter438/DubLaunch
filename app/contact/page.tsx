@@ -16,31 +16,32 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+        {/* Contact Information - Full Width */}
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Get in Touch</h2>
             
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              {/* Email Support */}
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-purple-600" />
+                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-7 h-7 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Email Support</h3>
-                  <p className="text-gray-700 mb-2">
-                    For general questions, support, or feedback
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Us</h3>
+                  <p className="text-gray-600 mb-3 text-sm">
+                    General inquiries, feedback, support, or partnership opportunities
                   </p>
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     <a 
                       href="mailto:support@dublaunch.io" 
-                      className="block text-purple-600 hover:text-purple-700 font-medium"
+                      className="block text-purple-600 hover:text-purple-700 font-medium text-sm"
                     >
                       support@dublaunch.io
                     </a>
                     <a 
                       href="mailto:info@dublaunch.io" 
-                      className="block text-purple-600 hover:text-purple-700 font-medium"
+                      className="block text-purple-600 hover:text-purple-700 font-medium text-sm"
                     >
                       info@dublaunch.io
                     </a>
@@ -48,150 +49,95 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Community Forums */}
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="w-6 h-6 text-blue-600" />
+                <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="w-7 h-7 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Community Forums</h3>
-                  <p className="text-gray-700 mb-2">
-                    Join discussions with other Huskies
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Community Forums</h3>
+                  <p className="text-gray-600 mb-3 text-sm">
+                    Join discussions with other UW students and get community support
                   </p>
                   <a 
                     href="/forums" 
-                    className="text-blue-600 hover:text-blue-700 font-medium"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm"
                   >
-                    Visit Forums →
+                    Visit Forums
+                    <span className="ml-1">→</span>
                   </a>
                 </div>
               </div>
 
+              {/* GitHub */}
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Github className="w-6 h-6 text-gray-600" />
+                <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Github className="w-7 h-7 text-gray-700" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">GitHub</h3>
-                  <p className="text-gray-700 mb-2">
-                    Report bugs or contribute to the project
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Bug Reports & Features</h3>
+                  <p className="text-gray-600 mb-3 text-sm">
+                    Report bugs, request features, or contribute to the codebase
                   </p>
                   <a 
                     href="https://github.com/yvetter438/DubLaunch" 
-                    className="text-gray-600 hover:text-gray-700 font-medium"
+                    className="inline-flex items-center text-gray-700 hover:text-gray-900 font-medium text-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     github.com/yvetter438/DubLaunch
+                    <span className="ml-1">↗</span>
                   </a>
                 </div>
               </div>
 
+              {/* Twitter/X */}
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Twitter className="w-6 h-6 text-sky-600" />
+                <div className="w-14 h-14 bg-sky-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Twitter className="w-7 h-7 text-sky-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">X (Twitter)</h3>
-                  <p className="text-gray-700 mb-2">
-                    Follow us for updates and announcements
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Follow Us</h3>
+                  <p className="text-gray-600 mb-3 text-sm">
+                    Stay updated with announcements, new features, and community highlights
                   </p>
                   <a 
                     href="https://x.com/dub_launch" 
-                    className="text-sky-600 hover:text-sky-700 font-medium"
+                    className="inline-flex items-center text-sky-600 hover:text-sky-700 font-medium text-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     @dub_launch
+                    <span className="ml-1">↗</span>
                   </a>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Contact Form */}
-          <div className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-            
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Your first name"
-                  />
+            {/* What to Reach Out For */}
+            <div className="border-t border-gray-200 pt-8">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6 text-center">What Can We Help You With?</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="bg-purple-50 rounded-lg p-4 text-center">
+                  <p className="text-sm font-medium text-purple-900">General Questions</p>
                 </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Your last name"
-                  />
+                <div className="bg-blue-50 rounded-lg p-4 text-center">
+                  <p className="text-sm font-medium text-blue-900">Technical Support</p>
+                </div>
+                <div className="bg-green-50 rounded-lg p-4 text-center">
+                  <p className="text-sm font-medium text-green-900">Feature Requests</p>
+                </div>
+                <div className="bg-red-50 rounded-lg p-4 text-center">
+                  <p className="text-sm font-medium text-red-900">Bug Reports</p>
+                </div>
+                <div className="bg-yellow-50 rounded-lg p-4 text-center">
+                  <p className="text-sm font-medium text-yellow-900">Partnerships</p>
+                </div>
+                <div className="bg-indigo-50 rounded-lg p-4 text-center">
+                  <p className="text-sm font-medium text-indigo-900">Feedback</p>
                 </div>
               </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="your.email@uw.edu"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                  Subject
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                >
-                  <option value="">Select a subject</option>
-                  <option value="general">General Question</option>
-                  <option value="bug">Bug Report</option>
-                  <option value="feature">Feature Request</option>
-                  <option value="support">Technical Support</option>
-                  <option value="partnership">Partnership Inquiry</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
-                  placeholder="Tell us how we can help..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors font-medium"
-              >
-                Send Message
-              </button>
-            </form>
+            </div>
           </div>
         </div>
 
