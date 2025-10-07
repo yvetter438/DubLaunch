@@ -31,12 +31,20 @@ export default function ContactPage() {
                   <p className="text-gray-700 mb-2">
                     For general questions, support, or feedback
                   </p>
-                  <a 
-                    href="mailto:support@dublaunch.com" 
-                    className="text-purple-600 hover:text-purple-700 font-medium"
-                  >
-                    support@dublaunch.com
-                  </a>
+                  <div className="space-y-1">
+                    <a 
+                      href="mailto:support@dublaunch.io" 
+                      className="block text-purple-600 hover:text-purple-700 font-medium"
+                    >
+                      support@dublaunch.io
+                    </a>
+                    <a 
+                      href="mailto:info@dublaunch.io" 
+                      className="block text-purple-600 hover:text-purple-700 font-medium"
+                    >
+                      info@dublaunch.io
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -68,12 +76,12 @@ export default function ContactPage() {
                     Report bugs or contribute to the project
                   </p>
                   <a 
-                    href="https://github.com/dublaunch" 
+                    href="https://github.com/yvetter438/DubLaunch" 
                     className="text-gray-600 hover:text-gray-700 font-medium"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    github.com/dublaunch
+                    github.com/yvetter438/DubLaunch
                   </a>
                 </div>
               </div>
@@ -83,17 +91,17 @@ export default function ContactPage() {
                   <Twitter className="w-6 h-6 text-sky-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Twitter</h3>
+                  <h3 className="font-semibold text-gray-900 mb-1">X (Twitter)</h3>
                   <p className="text-gray-700 mb-2">
                     Follow us for updates and announcements
                   </p>
                   <a 
-                    href="https://twitter.com/dublaunch" 
+                    href="https://x.com/dub_launch" 
                     className="text-sky-600 hover:text-sky-700 font-medium"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    @dublaunch
+                    @dub_launch
                   </a>
                 </div>
               </div>
