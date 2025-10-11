@@ -347,7 +347,7 @@ export default function LaunchPage() {
                   value={formData.twitter_url}
                   onChange={(e) => handleInputChange('twitter_url', e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="https://twitter.com/yourproject"
+                  placeholder="https://x.com/yourproject"
                 />
               </div>
             </div>
