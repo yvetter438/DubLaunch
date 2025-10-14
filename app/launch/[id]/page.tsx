@@ -74,11 +74,24 @@ export default function LaunchDetailPage() {
   const launchSlug = params.id as string
 
   useEffect(() => {
+    async function incrementViews() {
+      if (!launch) return; // Make sure launch is not null
+      try {
+        await supabase
+          .from('launches')
+          .update({ views_count: launch.views_count + 1 })
+          .eq('slug', launchSlug)
+      } catch (error) {
+        console.error('Error incrementing views:', error)
+      }
+    }
+
     if (launchSlug) {
       fetchLaunch()
-      checkUser()
+      incrementViews()
     }
-  }, [launchSlug])
+
+  }, [launchSlug, launch])
 
   const checkUser = async () => {
     const { data: { session } } = await supabase.auth.getSession()
