@@ -74,24 +74,11 @@ export default function LaunchDetailPage() {
   const launchSlug = params.id as string
 
   useEffect(() => {
-    async function incrementViews() {
-      if (!launch) return; // Make sure launch is not null
-      try {
-        await supabase
-          .from('launches')
-          .update({ views_count: launch.views_count + 1 })
-          .eq('slug', launchSlug)
-      } catch (error) {
-        console.error('Error incrementing views:', error)
-      }
-    }
-
     if (launchSlug) {
       fetchLaunch()
-      incrementViews()
+      checkUser()
     }
-
-  }, [launchSlug, launch])
+  }, [launchSlug])
 
   const checkUser = async () => {
     const { data: { session } } = await supabase.auth.getSession()
@@ -100,6 +87,10 @@ export default function LaunchDetailPage() {
 
   const fetchLaunch = async () => {
     try {
+      // Increment view count first using RPC (atomic operation)
+      await supabase.rpc('increment_launch_views', { launch_slug: launchSlug })
+
+      // Then fetch the launch data with updated view count
       const { data, error } = await supabase
         .from('launches')
         .select(`
@@ -118,17 +109,6 @@ export default function LaunchDetailPage() {
         console.error('Error fetching launch:', error)
         router.push('/404')
         return
-      }
-
-      // Increment view count first
-      const { error: updateError } = await supabase
-        .from('launches')
-        .update({ views_count: data.views_count + 1 })
-        .eq('slug', launchSlug)
-
-      if (!updateError) {
-        // Update local state with incremented count
-        data.views_count = data.views_count + 1
       }
 
       setLaunch(data)
