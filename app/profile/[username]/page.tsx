@@ -64,6 +64,11 @@ export default function PublicProfilePage() {
     }
   }, [user, launches])
 
+  const checkUser = async () => {
+    const { data: { session } } = await supabase.auth.getSession()
+    setUser(session?.user || null)
+  }
+
   const fetchProfile = async () => {
     try {
       // Fetch profile by username
@@ -118,11 +123,6 @@ export default function PublicProfilePage() {
         </div>
       </div>
     )
-  }
-
-  const checkUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession()
-    setUser(session?.user || null)
   }
 
   const fetchUserVotes = async () => {

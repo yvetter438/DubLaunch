@@ -113,7 +113,7 @@ export default function LeaderboardPage() {
               <div className="text-sm text-gray-600">Launches</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-2xl font-bold text-blue-600">0</div>
+              <div className="text-2xl font-bold text-blue-600">5</div>
               <div className="text-sm text-gray-600">Total Votes</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm">
@@ -121,7 +121,7 @@ export default function LeaderboardPage() {
               <div className="text-sm text-gray-600">Total Views</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-2xl font-bold text-orange-600">1</div>
+              <div className="text-2xl font-bold text-orange-600">3</div>
               <div className="text-sm text-gray-600">Creators</div>
             </div>
           </div>

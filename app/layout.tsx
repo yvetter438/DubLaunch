@@ -9,11 +9,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'DubLaunch - Discover Amazing Projects by UW Students',
   description: 'A ProductHunt for UW students - discover, launch, and vote on the coolest projects from the University of Washington community.',
-  icons: {
-    icon: '/logo.svg',
-    shortcut: '/logo.svg',
-    apple: '/logo.svg',
-  },
 }
 
 export default function RootLayout({

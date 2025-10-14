@@ -36,7 +36,7 @@ export default function Hero() {
               <div className="text-white/80">Projects Launched</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">4+</div>
+              <div className="text-3xl font-bold mb-2">7+</div>
               <div className="text-white/80">UW Students</div>
             </div>
             <div className="text-center">

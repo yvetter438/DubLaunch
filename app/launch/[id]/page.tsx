@@ -107,13 +107,18 @@ export default function LaunchDetailPage() {
         return
       }
 
-      setLaunch(data)
-      
-      // Increment view count
-      await supabase
+      // Increment view count first
+      const { error: updateError } = await supabase
         .from('launches')
         .update({ views_count: data.views_count + 1 })
         .eq('slug', launchSlug)
+
+      if (!updateError) {
+        // Update local state with incremented count
+        data.views_count = data.views_count + 1
+      }
+
+      setLaunch(data)
 
       // Check if user has voted
       if (user) {
