@@ -20,21 +20,47 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [emailError, setEmailError] = useState<string | null>(null)
+
+  const validateUWEmail = (email: string): boolean => {
+    // Validate that email ends with @uw.edu
+    const uwEmailRegex = /^[a-zA-Z0-9._%+-]+@uw\.edu$/i
+    return uwEmailRegex.test(email)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Frontend validation for UW email
+    if (!validateUWEmail(formData.email)) {
+      toast.error('Please use your @uw.edu email address. DubLaunch is exclusively for UW students.')
+      return
+    }
+
+    // Validate password match
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Passwords do not match')
+      return
+    }
+
+    // Validate password strength
+    if (formData.password.length < 8) {
+      toast.error('Password must be at least 8 characters long')
+      return
+    }
+
     setIsLoading(true)
     
     const supabase = createClient()
     
     try {
       const { data, error } = await supabase.auth.signUp({
-        email: formData.email,
+        email: formData.email.toLowerCase().trim(),
         password: formData.password,
         options: {
           data: {
-            username: formData.username,
-            name: formData.displayName,
+            username: formData.username.toLowerCase().trim(),
+            name: formData.displayName.trim(),
           }
         }
       })
@@ -42,7 +68,7 @@ export default function RegisterPage() {
       if (error) {
         toast.error(error.message)
       } else {
-        toast.success('Check your email for verification link!')
+        toast.success('Check your @uw.edu email for verification link!')
         router.push('/auth/login')
       }
     } catch (error) {
@@ -53,10 +79,21 @@ export default function RegisterPage() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value
     }))
+
+    // Real-time email validation
+    if (name === 'email') {
+      if (value && !validateUWEmail(value)) {
+        setEmailError('Please use your @uw.edu email address')
+      } else {
+        setEmailError(null)
+      }
+    }
   }
 
   return (
@@ -137,12 +174,31 @@ export default function RegisterPage() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
-                    placeholder="your.email@uw.edu"
+                    className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+                      emailError 
+                        ? 'border-red-300 focus:ring-red-500/20 focus:border-red-500' 
+                        : 'border-gray-300 focus:ring-uw-purple/20 focus:border-uw-purple'
+                    }`}
+                    placeholder="yournetid@uw.edu"
                     value={formData.email}
                     onChange={handleChange}
                   />
                 </div>
+                {emailError && (
+                  <p className="mt-1 text-xs text-red-600 flex items-center">
+                    <span className="mr-1">⚠️</span>
+                    {emailError}
+                  </p>
+                )}
+                {!emailError && formData.email && validateUWEmail(formData.email) && (
+                  <p className="mt-1 text-xs text-green-600 flex items-center">
+                    <span className="mr-1">✓</span>
+                    Valid UW email
+                  </p>
+                )}
+                <p className="mt-1 text-xs text-gray-500">
+                  Only @uw.edu email addresses are allowed
+                </p>
               </div>
 
               <div>
