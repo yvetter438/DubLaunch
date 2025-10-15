@@ -36,11 +36,11 @@ export default function Hero() {
               <div className="text-white/80">Projects Launched</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">7+</div>
+              <div className="text-3xl font-bold mb-2">12+</div>
               <div className="text-white/80">UW Students</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">3+</div>
+              <div className="text-3xl font-bold mb-2">12+</div>
               <div className="text-white/80">Total Votes</div>
             </div>
           </div>
