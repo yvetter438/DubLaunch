@@ -34,7 +34,7 @@ interface Launch {
 
 export default async function DiscoverPage() {
   // Fetch data on the server with caching
-  const initialLaunches = await getCachedLaunches() as Launch[]
+  const initialLaunches = await getCachedLaunches() as unknown as Launch[]
 
   return (
     <div className="min-h-screen bg-gray-50">

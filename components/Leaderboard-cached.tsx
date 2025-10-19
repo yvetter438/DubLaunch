@@ -14,7 +14,7 @@ interface Launch {
 }
 
 export default async function Leaderboard() {
-  const topLaunches = await getCachedTopLaunches(5) as Launch[]
+  const topLaunches = await getCachedTopLaunches(5) as unknown as Launch[]
 
   const getRankBadge = (rank: number) => {
     if (rank === 1) return 'bg-yellow-100 text-yellow-800'

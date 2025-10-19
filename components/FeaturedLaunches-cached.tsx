@@ -24,7 +24,7 @@ interface Launch {
 }
 
 export default async function FeaturedLaunches() {
-  const launches = await getCachedFeaturedLaunches(6) as Launch[]
+  const launches = await getCachedFeaturedLaunches(6) as unknown as Launch[]
 
   return (
     <div className="space-y-6">

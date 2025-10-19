@@ -31,7 +31,7 @@ interface Launch {
 
 export default async function LeaderboardPage() {
   // Fetch data on the server with caching
-  const launches = await getCachedLeaderboard(50) as Launch[]
+  const launches = await getCachedLeaderboard(50) as unknown as Launch[]
 
   return (
     <div className="min-h-screen bg-gray-50">
