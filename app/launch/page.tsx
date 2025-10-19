@@ -103,7 +103,7 @@ export default function LaunchPage() {
     const { data: { session } } = await supabase.auth.getSession()
     
     if (!session) {
-      router.push('/auth/login')
+      router.replace('/auth/login')
       return
     }
     
