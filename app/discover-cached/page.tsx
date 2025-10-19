@@ -11,9 +11,30 @@ export const metadata = {
   description: 'Explore the latest launches from the UW community',
 }
 
+interface Launch {
+  id: string
+  name: string
+  slug: string
+  tagline: string
+  description: string
+  thumbnail_url: string
+  website_url: string
+  primary_category: string
+  tags: string[]
+  votes_count: number
+  views_count: number
+  comments_count: number
+  created_at: string
+  profiles: {
+    username: string
+    display_name: string
+    avatar_url: string
+  }
+}
+
 export default async function DiscoverPage() {
   // Fetch data on the server with caching
-  const initialLaunches = await getCachedLaunches()
+  const initialLaunches = await getCachedLaunches() as Launch[]
 
   return (
     <div className="min-h-screen bg-gray-50">

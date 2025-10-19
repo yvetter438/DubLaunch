@@ -4,8 +4,27 @@ import { formatDistanceToNow } from 'date-fns'
 import { getCachedFeaturedLaunches } from '@/lib/supabase/server-cache'
 import VoteButton from './VoteButton'
 
+interface Launch {
+  id: string
+  name: string
+  slug: string
+  tagline: string
+  thumbnail_url: string
+  website_url: string
+  primary_category: string
+  votes_count: number
+  views_count: number
+  comments_count: number
+  created_at: string
+  profiles: {
+    username: string
+    display_name: string
+    avatar_url: string
+  }
+}
+
 export default async function FeaturedLaunches() {
-  const launches = await getCachedFeaturedLaunches(6)
+  const launches = await getCachedFeaturedLaunches(6) as Launch[]
 
   return (
     <div className="space-y-6">

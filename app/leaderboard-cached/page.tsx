@@ -11,9 +11,27 @@ export const metadata = {
   description: 'Top projects ranked by community votes',
 }
 
+interface Launch {
+  id: string
+  name: string
+  slug: string
+  tagline: string
+  thumbnail_url: string
+  primary_category: string
+  votes_count: number
+  views_count: number
+  comments_count: number
+  created_at: string
+  profiles: {
+    username: string
+    display_name: string
+    avatar_url: string
+  }
+}
+
 export default async function LeaderboardPage() {
   // Fetch data on the server with caching
-  const launches = await getCachedLeaderboard(50)
+  const launches = await getCachedLeaderboard(50) as Launch[]
 
   return (
     <div className="min-h-screen bg-gray-50">

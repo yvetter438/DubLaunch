@@ -2,8 +2,19 @@ import { Trophy, Heart } from 'lucide-react'
 import Link from 'next/link'
 import { getCachedTopLaunches } from '@/lib/supabase/server-cache'
 
+interface Launch {
+  id: string
+  name: string
+  slug: string
+  votes_count: number
+  profiles: {
+    username: string
+    display_name: string
+  }
+}
+
 export default async function Leaderboard() {
-  const topLaunches = await getCachedTopLaunches(5)
+  const topLaunches = await getCachedTopLaunches(5) as Launch[]
 
   const getRankBadge = (rank: number) => {
     if (rank === 1) return 'bg-yellow-100 text-yellow-800'
