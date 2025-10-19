@@ -161,7 +161,7 @@ export default function MyProfilePage() {
         return
       }
 
-      setLaunches(data || [])
+      setLaunches((data || []) as any)
     } catch (error) {
       console.error('Error fetching launches:', error)
     }

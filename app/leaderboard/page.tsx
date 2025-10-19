@@ -88,7 +88,7 @@ export default function LeaderboardPage() {
 
       if (error) throw error
 
-      setLaunches(data || [])
+      setLaunches((data || []) as any)
     } catch (err) {
       console.error('Error fetching leaderboard:', err)
       setError(err instanceof Error ? err.message : 'Failed to load leaderboard')

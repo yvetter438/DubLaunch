@@ -173,9 +173,9 @@ function DiscoverPageContent() {
       }
 
       if (reset) {
-        setLaunches(data || [])
+        setLaunches((data || []) as any)
       } else {
-        setLaunches(prev => [...prev, ...(data || [])])
+        setLaunches(prev => [...prev, ...((data || []) as any)])
       }
 
       setHasMore((data || []).length === 12)

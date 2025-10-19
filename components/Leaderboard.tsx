@@ -46,7 +46,7 @@ export default function Leaderboard() {
 
       if (error) throw error
 
-      setTopLaunches(data || [])
+      setTopLaunches((data || []) as unknown as Launch[])
     } catch (error) {
       console.error('Error fetching top launches:', error)
     } finally {
