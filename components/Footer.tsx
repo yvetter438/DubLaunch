@@ -25,6 +25,20 @@ export default function Footer() {
               The ProductHunt for UW students. Discover and share amazing student projects, 
               connect with fellow Huskies, and showcase your innovations.
             </p>
+            
+            {/* Product Hunt Badge */}
+            <div className="mb-6">
+              <a href="https://www.producthunt.com/products/dublaunch?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-dublaunch" target="_blank" rel="noopener noreferrer">
+                <img 
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1025278&theme=light&t=1760992962096" 
+                  alt="DubLaunch - Product Hunt for UW Students | Product Hunt" 
+                  style={{ width: '250px', height: '54px' }} 
+                  width="250" 
+                  height="54" 
+                />
+              </a>
+            </div>
+
             <div className="flex space-x-4">
               <a href="https://discord.gg/GAbbTPv2vh" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <span className="sr-only">Discord</span>
