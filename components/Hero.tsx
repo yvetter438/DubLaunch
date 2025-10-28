@@ -32,15 +32,15 @@ export default function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">6+</div>
+              <div className="text-3xl font-bold mb-2">11+</div>
               <div className="text-white/80">Projects Launched</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">18+</div>
+              <div className="text-3xl font-bold mb-2">24+</div>
               <div className="text-white/80">UW Students</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold mb-2">17+</div>
+              <div className="text-3xl font-bold mb-2">20+</div>
               <div className="text-white/80">Total Votes</div>
             </div>
           </div>
