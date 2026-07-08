@@ -105,7 +105,7 @@ function DiscoverPageContent() {
     window.history.replaceState({}, '', `/discover${newUrl}`)
   }, [searchQuery, selectedCategory, sortBy])
 
-  const applyLaunchFilters = (query: ReturnType<typeof supabase.from>) => {
+  const applyLaunchFilters = (query: any) => {
     let filteredQuery = query.eq('status', 'published')
 
     if (selectedCategory !== 'All') {
@@ -127,7 +127,7 @@ function DiscoverPageContent() {
     return filteredQuery
   }
 
-  const applySorting = (query: ReturnType<typeof supabase.from>) => {
+  const applySorting = (query: any) => {
     switch (sortBy) {
       case 'newest':
         return query.order('created_at', { ascending: false })
