@@ -53,7 +53,7 @@ export default function AboutPage() {
             <ul className="text-gray-700 space-y-2">
               <li>• Browse the latest student projects</li>
               <li>• Vote for your favorites</li>
-              <li>• Join discussions in our forums</li>
+              <li>• Connect with the community on Discord</li>
               <li>• Get inspired by fellow Huskies</li>
             </ul>
           </div>

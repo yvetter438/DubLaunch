@@ -85,7 +85,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/forums" className="text-gray-300 hover:text-white transition-colors">
-                  Forum
+                  Community
                 </Link>
               </li>
               <li>

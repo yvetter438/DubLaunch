@@ -117,23 +117,14 @@ export default function FAQPage() {
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Forums</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Community</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">What are the forums for?</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">How do I connect with other students?</h3>
                 <p className="text-gray-700">
-                  The forums are for community discussions, asking questions, sharing tips, and connecting 
-                  with other students. Categories include General Discussion, Feedback, Showcase, Help & Support, 
-                  and Announcements.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">How do I create a forum post?</h3>
-                <p className="text-gray-700">
-                  Go to the Forums page, select the appropriate category, and click "New Post". Choose a 
-                  descriptive title and provide detailed information to help others understand your topic.
+                  Join our Discord server to chat with the UW community, ask questions, share ideas, and get help in real time.
+                  Visit the Community page or use the Discord link in the site footer.
                 </p>
               </div>
             </div>

@@ -69,7 +69,7 @@ export default function Header() {
               Leaderboard
             </Link>
             <Link href="/forums" className="text-gray-700 hover:text-uw-purple transition-colors">
-              Forums
+              Community
             </Link>
           </nav>
 
@@ -82,7 +82,7 @@ export default function Header() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyPress={handleSearchKeyPress}
-                placeholder="Search projects, users, discussions..."
+                placeholder="Search projects, users..."
                 className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
               />
             </form>
@@ -138,7 +138,7 @@ export default function Header() {
                 Leaderboard
               </Link>
               <Link href="/forums" className="text-gray-700 hover:text-uw-purple transition-colors">
-                Forums
+                Community
               </Link>
               <div className="pt-4 border-t border-gray-100">
                 {isLoggedIn ? (

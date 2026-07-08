@@ -49,21 +49,21 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Community Forums */}
+              {/* Community */}
               <div className="flex items-start space-x-4">
                 <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                   <MessageSquare className="w-7 h-7 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Community Forums</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Community</h3>
                   <p className="text-gray-600 mb-3 text-sm">
-                    Join discussions with other UW students and get community support
+                    Join our Discord to connect with other UW students and get community support
                   </p>
                   <a 
                     href="/forums" 
                     className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm"
                   >
-                    Visit Forums
+                    Join Discord
                     <span className="ml-1">→</span>
                   </a>
                 </div>

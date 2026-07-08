@@ -5,11 +5,11 @@ import { createClient } from '@/lib/supabase/client'
 import Header from '@/components/Header'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { Search, User, Rocket, MessageSquare, Calendar, Eye, Heart } from 'lucide-react'
+import { Search, User, Rocket, Calendar, Eye, Heart } from 'lucide-react'
 
 interface SearchResult {
   id: string
-  type: 'launch' | 'user' | 'post'
+  type: 'launch' | 'user'
   title: string
   description: string
   image?: string
@@ -26,7 +26,7 @@ function SearchPageContent() {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchResult[]>([])
   const [loading, setLoading] = useState(false)
-  const [selectedType, setSelectedType] = useState<'all' | 'launches' | 'users' | 'posts'>('all')
+  const [selectedType, setSelectedType] = useState<'all' | 'launches' | 'users'>('all')
   const [hasSearched, setHasSearched] = useState(false)
 
   const supabase = createClient()
@@ -122,50 +122,6 @@ function SearchPageContent() {
         }
       }
 
-      // Search forum posts
-      if (selectedType === 'all' || selectedType === 'posts') {
-        const { data: posts, error: postsError } = await supabase
-          .from('forum_posts')
-          .select(`
-            id,
-            title,
-            content,
-            created_at,
-            views_count,
-            likes_count,
-            forum_categories!forum_posts_category_id_fkey (
-              name,
-              color,
-              icon
-            ),
-            profiles!forum_posts_author_id_fkey (
-              username,
-              display_name
-            )
-          `)
-          .eq('status', 'published')
-          .or(`title.ilike.%${searchQuery}%,content.ilike.%${searchQuery}%`)
-          .order('created_at', { ascending: false })
-          .limit(10)
-
-        if (!postsError && posts) {
-          posts.forEach(post => {
-            results.push({
-              id: post.id,
-              type: 'post',
-              title: post.title,
-              description: post.content?.substring(0, 200) + '...',
-              author: post.profiles?.[0]?.display_name || 'Unknown',
-              username: post.profiles?.[0]?.username,
-              category: post.forum_categories?.[0]?.name,
-              views_count: post.views_count || 0,
-              votes_count: post.likes_count || 0,
-              created_at: post.created_at
-            })
-          })
-        }
-      }
-
       // Sort results by relevance (recent first for now)
       results.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
       setResults(results)
@@ -182,7 +138,7 @@ function SearchPageContent() {
     searchAll(query)
   }
 
-  const handleTypeChange = (type: 'all' | 'launches' | 'users' | 'posts') => {
+  const handleTypeChange = (type: 'all' | 'launches' | 'users') => {
     setSelectedType(type)
     if (query.trim()) {
       searchAll(query)
@@ -205,7 +161,6 @@ function SearchPageContent() {
     switch (type) {
       case 'launch': return <Rocket className="w-5 h-5 text-purple-600" />
       case 'user': return <User className="w-5 h-5 text-blue-600" />
-      case 'post': return <MessageSquare className="w-5 h-5 text-green-600" />
       default: return <Search className="w-5 h-5 text-gray-600" />
     }
   }
@@ -214,7 +169,6 @@ function SearchPageContent() {
     switch (result.type) {
       case 'launch': return `/launch/${result.slug}`
       case 'user': return `/profile/${result.username}`
-      case 'post': return `/forums/post/${result.id}`
       default: return '#'
     }
   }
@@ -227,7 +181,7 @@ function SearchPageContent() {
         {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Search DubLaunch</h1>
-          <p className="text-gray-600">Find projects, users, and discussions</p>
+          <p className="text-gray-600">Find projects and users</p>
         </div>
 
         {/* Search Form */}
@@ -238,7 +192,7 @@ function SearchPageContent() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for projects, users, or discussions..."
+              placeholder="Search for projects or users..."
               className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600 text-lg"
             />
             <button
@@ -258,7 +212,6 @@ function SearchPageContent() {
               { key: 'all', label: 'All', icon: Search },
               { key: 'launches', label: 'Projects', icon: Rocket },
               { key: 'users', label: 'Users', icon: User },
-              { key: 'posts', label: 'Discussions', icon: MessageSquare }
             ].map(({ key, label, icon: Icon }) => (
               <button
                 key={key}
@@ -373,7 +326,7 @@ function SearchPageContent() {
             <Search className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-medium text-gray-900 mb-2">Start searching</h3>
             <p className="text-gray-600">
-              Search for projects, users, or discussions to get started.
+              Search for projects or users to get started.
             </p>
           </div>
         )}
