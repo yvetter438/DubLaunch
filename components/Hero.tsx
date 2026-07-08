@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Sparkles, Users, TrendingUp } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowRight, Sparkles } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -17,6 +18,21 @@ export default function Hero() {
             DubLaunch is your gateway to discovering, launching, and supporting the most innovative 
             projects from the University of Washington community.
           </p>
+
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-3 mb-8">
+            <Image
+              src="/yclogo.png"
+              alt="Y Combinator"
+              width={32}
+              height={32}
+              className="flex-shrink-0 rounded-md"
+            />
+            <p className="text-sm md:text-base text-white/95 text-left">
+              <span className="font-semibold">DubLaunchers</span> got into{' '}
+              <span className="font-semibold">Y Combinator</span>
+              <span className="text-white/75"> · Summer 2026 batch</span>
+            </p>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/launch" className="bg-white text-uw-purple hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center space-x-2">
