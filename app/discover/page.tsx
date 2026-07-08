@@ -160,8 +160,8 @@ function DiscoverPageContent() {
       }
 
       // Apply pagination
-      const currentPage = reset ? 1 : page
-      const from = (currentPage - 1) * 12
+      const pageToFetch = reset ? 1 : page + 1
+      const from = (pageToFetch - 1) * 12
       const to = from + 11
       query = query.range(from, to)
 
@@ -172,14 +172,17 @@ function DiscoverPageContent() {
         return
       }
 
+      const newLaunches = (data || []) as Launch[]
+
       if (reset) {
-        setLaunches((data || []) as any)
+        setLaunches(newLaunches)
+        setPage(1)
       } else {
-        setLaunches(prev => [...prev, ...((data || []) as any)])
+        setLaunches(prev => [...prev, ...newLaunches])
+        setPage(pageToFetch)
       }
 
-      setHasMore((data || []).length === 12)
-      if (!reset) setPage(prev => prev + 1)
+      setHasMore(newLaunches.length === 12)
 
     } catch (error) {
       console.error('Error fetching launches:', error)
