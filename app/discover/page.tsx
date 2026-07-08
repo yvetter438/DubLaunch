@@ -75,6 +75,7 @@ function DiscoverPageContent() {
   const [sortBy, setSortBy] = useState(searchParams.get('sort') || 'newest')
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
+  const [totalLaunches, setTotalLaunches] = useState(0)
   const [loadingMore, setLoadingMore] = useState(false)
   const [user, setUser] = useState<any>(null)
   const [userVotes, setUserVotes] = useState<Set<string>>(new Set())
@@ -104,6 +105,45 @@ function DiscoverPageContent() {
     window.history.replaceState({}, '', `/discover${newUrl}`)
   }, [searchQuery, selectedCategory, sortBy])
 
+  const applyLaunchFilters = (query: ReturnType<typeof supabase.from>) => {
+    let filteredQuery = query.eq('status', 'published')
+
+    if (selectedCategory !== 'All') {
+      filteredQuery = filteredQuery.eq('primary_category', selectedCategory)
+    }
+
+    if (searchQuery.trim()) {
+      filteredQuery = filteredQuery.or(
+        `name.ilike.%${searchQuery}%, tagline.ilike.%${searchQuery}%, description.ilike.%${searchQuery}%`
+      )
+    }
+
+    if (sortBy === 'trending') {
+      const weekAgo = new Date()
+      weekAgo.setDate(weekAgo.getDate() - 7)
+      filteredQuery = filteredQuery.gte('created_at', weekAgo.toISOString())
+    }
+
+    return filteredQuery
+  }
+
+  const applySorting = (query: ReturnType<typeof supabase.from>) => {
+    switch (sortBy) {
+      case 'newest':
+        return query.order('created_at', { ascending: false })
+      case 'oldest':
+        return query.order('created_at', { ascending: true })
+      case 'votes':
+        return query.order('votes_count', { ascending: false })
+      case 'views':
+        return query.order('views_count', { ascending: false })
+      case 'trending':
+        return query.order('votes_count', { ascending: false })
+      default:
+        return query.order('created_at', { ascending: false })
+    }
+  }
+
   const fetchLaunches = async (reset = false) => {
     if (reset) {
       setLoading(true)
@@ -113,9 +153,9 @@ function DiscoverPageContent() {
     }
 
     try {
-      let query = supabase
-        .from('launches')
-        .select(`
+      let query = applySorting(
+        applyLaunchFilters(
+          supabase.from('launches').select(`
           *,
           profiles (
             username,
@@ -123,41 +163,8 @@ function DiscoverPageContent() {
             avatar_url
           )
         `)
-        .eq('status', 'published')
-
-      // Apply category filter
-      if (selectedCategory !== 'All') {
-        query = query.eq('primary_category', selectedCategory)
-      }
-
-      // Apply search filter
-      if (searchQuery.trim()) {
-        query = query.or(`name.ilike.%${searchQuery}%, tagline.ilike.%${searchQuery}%, description.ilike.%${searchQuery}%`)
-      }
-
-      // Apply sorting
-      switch (sortBy) {
-        case 'newest':
-          query = query.order('created_at', { ascending: false })
-          break
-        case 'oldest':
-          query = query.order('created_at', { ascending: true })
-          break
-        case 'votes':
-          query = query.order('votes_count', { ascending: false })
-          break
-        case 'views':
-          query = query.order('views_count', { ascending: false })
-          break
-        case 'trending':
-          // Trending = high votes in last 7 days
-          const weekAgo = new Date()
-          weekAgo.setDate(weekAgo.getDate() - 7)
-          query = query
-            .gte('created_at', weekAgo.toISOString())
-            .order('votes_count', { ascending: false })
-          break
-      }
+        )
+      )
 
       // Apply pagination
       const pageToFetch = reset ? 1 : page + 1
@@ -165,11 +172,29 @@ function DiscoverPageContent() {
       const to = from + 11
       query = query.range(from, to)
 
-      const { data, error } = await query
+      const requests = [query]
+
+      if (reset) {
+        requests.push(
+          applyLaunchFilters(
+            supabase.from('launches').select('*', { count: 'exact', head: true })
+          )
+        )
+      }
+
+      const results = await Promise.all(requests)
+      const { data, error } = results[0]
 
       if (error) {
         console.error('Error fetching launches:', error)
         return
+      }
+
+      if (reset) {
+        const countResult = results[1]
+        if (!countResult.error && countResult.count !== null) {
+          setTotalLaunches(countResult.count)
+        }
       }
 
       const newLaunches = (data || []) as Launch[]
@@ -399,7 +424,7 @@ function DiscoverPageContent() {
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-4">
                 <span className="text-gray-600">
-                  {loading ? 'Loading...' : `${launches.length} launches`}
+                  {loading ? 'Loading...' : `${totalLaunches} launches`}
                 </span>
                 {searchQuery && (
                   <span className="text-sm text-gray-500">
