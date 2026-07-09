@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
-import ConditionalFooter from '@/components/home/ConditionalFooter'
+import EditorialShell from '@/components/editorial/EditorialShell'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,9 +33,10 @@ export default function RootLayout({
           `,
         }} />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
-        <ConditionalFooter />
+      <body
+        className={`${inter.variable} editorial font-sans antialiased bg-white text-black selection:bg-uw-purple selection:text-white md:cursor-none`}
+      >
+        <EditorialShell>{children}</EditorialShell>
         <Toaster
           position="top-right"
           toastOptions={{

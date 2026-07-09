@@ -1,17 +1,14 @@
 'use client'
 
-import Header from '@/components/Header'
 import { Mail, MessageSquare, Github, Twitter } from 'lucide-react'
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <div className="min-h-screen bg-white pt-28">      
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="text-4xl font-bold text-black mb-4">Contact Us</h1>
+          <p className="text-xl text-neutral-600">
             Get in touch with the DubLaunch team
           </p>
         </div>
@@ -19,29 +16,29 @@ export default function ContactPage() {
         {/* Contact Information - Full Width */}
         <div className="max-w-5xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Get in Touch</h2>
+            <h2 className="text-3xl font-bold text-black mb-8 text-center">Get in Touch</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {/* Email Support */}
               <div className="flex items-start space-x-4">
                 <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-7 h-7 text-purple-600" />
+                  <Mail className="w-7 h-7 text-uw-purple" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Us</h3>
-                  <p className="text-gray-600 mb-3 text-sm">
+                  <h3 className="text-lg font-semibold text-black mb-2">Email Us</h3>
+                  <p className="text-neutral-600 mb-3 text-sm">
                     General inquiries, feedback, support, or partnership opportunities
                   </p>
                   <div className="space-y-2">
                     <a 
                       href="mailto:support@dublaunch.io" 
-                      className="block text-purple-600 hover:text-purple-700 font-medium text-sm"
+                      className="block text-uw-purple hover:text-purple-700 font-medium text-sm"
                     >
                       support@dublaunch.io
                     </a>
                     <a 
                       href="mailto:info@dublaunch.io" 
-                      className="block text-purple-600 hover:text-purple-700 font-medium text-sm"
+                      className="block text-uw-purple hover:text-purple-700 font-medium text-sm"
                     >
                       info@dublaunch.io
                     </a>
@@ -55,8 +52,8 @@ export default function ContactPage() {
                   <MessageSquare className="w-7 h-7 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Community</h3>
-                  <p className="text-gray-600 mb-3 text-sm">
+                  <h3 className="text-lg font-semibold text-black mb-2">Community</h3>
+                  <p className="text-neutral-600 mb-3 text-sm">
                     Join our Discord to connect with other UW students and get community support
                   </p>
                   <a 
@@ -72,16 +69,16 @@ export default function ContactPage() {
               {/* GitHub */}
               <div className="flex items-start space-x-4">
                 <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Github className="w-7 h-7 text-gray-700" />
+                  <Github className="w-7 h-7 text-neutral-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Bug Reports & Features</h3>
-                  <p className="text-gray-600 mb-3 text-sm">
+                  <h3 className="text-lg font-semibold text-black mb-2">Bug Reports & Features</h3>
+                  <p className="text-neutral-600 mb-3 text-sm">
                     Report bugs, request features, or contribute to the codebase
                   </p>
                   <a 
                     href="https://github.com/yvetter438/DubLaunch" 
-                    className="inline-flex items-center text-gray-700 hover:text-gray-900 font-medium text-sm"
+                    className="inline-flex items-center text-neutral-600 hover:text-black font-medium text-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -97,8 +94,8 @@ export default function ContactPage() {
                   <Twitter className="w-7 h-7 text-sky-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Follow Us</h3>
-                  <p className="text-gray-600 mb-3 text-sm">
+                  <h3 className="text-lg font-semibold text-black mb-2">Follow Us</h3>
+                  <p className="text-neutral-600 mb-3 text-sm">
                     Stay updated with announcements, new features, and community highlights
                   </p>
                   <a 
@@ -116,7 +113,7 @@ export default function ContactPage() {
 
             {/* What to Reach Out For */}
             <div className="border-t border-gray-200 pt-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6 text-center">What Can We Help You With?</h3>
+              <h3 className="text-xl font-semibold text-black mb-6 text-center">What Can We Help You With?</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div className="bg-purple-50 rounded-lg p-4 text-center">
                   <p className="text-sm font-medium text-purple-900">General Questions</p>

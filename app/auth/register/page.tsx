@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Mail, Lock, Eye, EyeOff, User, AtSign } from 'lucide-react'
-import Header from '@/components/Header'
 import { createClient } from '@/lib/supabase/client'
 import toast from 'react-hot-toast'
 
@@ -97,19 +96,17 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <div className="min-h-screen bg-white pt-28">      
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
             <div className="mx-auto w-16 h-16 bg-gradient-to-r from-uw-purple to-uw-gold rounded-2xl flex items-center justify-center">
               <span className="text-white font-bold text-2xl">D</span>
             </div>
-            <h2 className="mt-6 text-3xl font-bold text-gray-900">
+            <h2 className="mt-6 text-3xl font-bold text-black">
               Join the DubLaunch Community
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-neutral-600">
               Create your account to start launching and discovering amazing projects
             </p>
           </div>
@@ -117,57 +114,57 @@ export default function RegisterPage() {
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div>
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="username" className="block text-sm font-medium text-neutral-600 mb-1">
                   Username
                 </label>
                 <div className="relative">
-                  <AtSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+                  <AtSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="username"
                     name="username"
                     type="text"
                     autoComplete="username"
                     required
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
+                    className="w-full pl-10 pr-4 py-2 border border-black/10 focus:outline-none focus:border-uw-purple outline-none"
                     placeholder="johndoe"
                     value={formData.username}
                     onChange={handleChange}
                   />
                 </div>
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-neutral-500">
                   This will be your unique @username on DubLaunch
                 </p>
               </div>
 
               <div>
-                <label htmlFor="displayName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="displayName" className="block text-sm font-medium text-neutral-600 mb-1">
                   Display Name
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="displayName"
                     name="displayName"
                     type="text"
                     autoComplete="name"
                     required
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
+                    className="w-full pl-10 pr-4 py-2 border border-black/10 focus:outline-none focus:border-uw-purple outline-none"
                     placeholder="John Doe"
                     value={formData.displayName}
                     onChange={handleChange}
                   />
                 </div>
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-neutral-500">
                   This is how your name will appear to other users
                 </p>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-neutral-600 mb-1">
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="email"
                     name="email"
@@ -196,31 +193,31 @@ export default function RegisterPage() {
                     Valid UW email
                   </p>
                 )}
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-neutral-500">
                   Only @uw.edu email addresses are allowed
                 </p>
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="password" className="block text-sm font-medium text-neutral-600 mb-1">
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="password"
                     name="password"
                     type={showPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     required
-                    className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
+                    className="w-full pl-10 pr-12 py-2 border border-black/10 focus:outline-none focus:border-uw-purple outline-none"
                     placeholder="Create a strong password"
                     value={formData.password}
                     onChange={handleChange}
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -229,25 +226,25 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-neutral-600 mb-1">
                   Confirm Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5 pointer-events-none" />
                   <input
                     id="confirmPassword"
                     name="confirmPassword"
                     type={showConfirmPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     required
-                    className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
+                    className="w-full pl-10 pr-12 py-2 border border-black/10 focus:outline-none focus:border-uw-purple outline-none"
                     placeholder="Confirm your password"
                     value={formData.confirmPassword}
                     onChange={handleChange}
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -264,7 +261,7 @@ export default function RegisterPage() {
                 required
                 className="h-4 w-4 text-uw-purple focus:ring-uw-purple border-gray-300 rounded"
               />
-              <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
+              <label htmlFor="terms" className="ml-2 block text-sm text-black">
                 I agree to the{' '}
                 <Link href="/terms" className="text-uw-purple hover:text-uw-purple/80">
                   Terms of Service
@@ -287,7 +284,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-neutral-600">
                 Already have an account?{' '}
                 <Link href="/auth/login" className="text-uw-purple hover:text-uw-purple/80 font-medium">
                   Sign in

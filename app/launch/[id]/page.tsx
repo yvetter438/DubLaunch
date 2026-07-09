@@ -8,7 +8,6 @@ import {
   Calendar, Eye, Share2, Play, Tag, Users,
   DollarSign, Gift, Clock, CheckCircle
 } from 'lucide-react'
-import Header from '@/components/Header'
 import toast from 'react-hot-toast'
 
 interface Launch {
@@ -278,10 +277,10 @@ export default function LaunchDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white pt-28 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading launch...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-uw-purple mx-auto"></div>
+          <p className="mt-4 text-neutral-600">Loading launch...</p>
         </div>
       </div>
     )
@@ -289,13 +288,13 @@ export default function LaunchDetailPage() {
 
   if (!launch) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white pt-28 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Launch Not Found</h1>
-          <p className="text-gray-600 mb-6">The launch you're looking for doesn't exist or has been removed.</p>
+          <h1 className="text-2xl font-bold text-black mb-4">Launch Not Found</h1>
+          <p className="text-neutral-600 mb-6">The launch you're looking for doesn't exist or has been removed.</p>
           <button
             onClick={() => router.push('/')}
-            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+            className="px-4 py-2 bg-uw-purple text-white rounded-lg hover:opacity-90"
           >
             Go Home
           </button>
@@ -305,14 +304,12 @@ export default function LaunchDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <div className="min-h-screen bg-white pt-28">      
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Back Button */}
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6"
+          className="flex items-center gap-2 text-neutral-600 hover:text-black mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back
@@ -322,7 +319,7 @@ export default function LaunchDetailPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Launch Header */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="card p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-start space-x-4">
                   {launch.thumbnail_url ? (
@@ -339,9 +336,9 @@ export default function LaunchDetailPage() {
                     </div>
                   )}
                   <div>
-                    <h1 className="text-2xl font-bold text-gray-900">{launch.name}</h1>
-                    <p className="text-gray-600">{launch.tagline}</p>
-                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                    <h1 className="text-2xl font-bold text-black">{launch.name}</h1>
+                    <p className="text-neutral-600">{launch.tagline}</p>
+                    <div className="flex items-center gap-4 mt-2 text-sm text-neutral-500">
                       <span className="flex items-center gap-1">
                         <Eye className="w-4 h-4" />
                         {launch.views_count} views
@@ -360,7 +357,7 @@ export default function LaunchDetailPage() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                     hasVoted
                       ? 'bg-red-100 text-red-700 hover:bg-red-200'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 text-neutral-600 hover:bg-gray-200'
                   }`}
                 >
                   <Heart className={`w-4 h-4 ${hasVoted ? 'fill-current' : ''}`} />
@@ -368,7 +365,7 @@ export default function LaunchDetailPage() {
                 </button>
               </div>
 
-              <p className="text-gray-700 mb-4">{launch.description}</p>
+              <p className="text-neutral-600 mb-4">{launch.description}</p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
@@ -376,7 +373,7 @@ export default function LaunchDetailPage() {
                   {launch.primary_category}
                 </span>
                 {launch.tags.map(tag => (
-                  <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded">
+                  <span key={tag} className="px-2 py-1 bg-gray-100 text-neutral-600 text-sm rounded">
                     {tag}
                   </span>
                 ))}
@@ -388,7 +385,7 @@ export default function LaunchDetailPage() {
                   href={launch.website_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-uw-purple text-white rounded-lg hover:opacity-90 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
                   Visit Website
@@ -399,7 +396,7 @@ export default function LaunchDetailPage() {
                     href={launch.demo_video_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-neutral-600 rounded-lg hover:bg-neutral-50 transition-colors"
                   >
                     <Play className="w-4 h-4" />
                     Watch Demo
@@ -411,7 +408,7 @@ export default function LaunchDetailPage() {
                     href={launch.apple_store_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-neutral-600 rounded-lg hover:bg-neutral-50 transition-colors"
                   >
                     App Store
                   </a>
@@ -422,7 +419,7 @@ export default function LaunchDetailPage() {
                     href={launch.android_store_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-neutral-600 rounded-lg hover:bg-neutral-50 transition-colors"
                   >
                     Play Store
                   </a>
@@ -433,7 +430,7 @@ export default function LaunchDetailPage() {
                     href={launch.twitter_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-neutral-600 rounded-lg hover:bg-neutral-50 transition-colors"
                   >
                     Twitter
                   </a>
@@ -445,7 +442,7 @@ export default function LaunchDetailPage() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-neutral-600 rounded-lg hover:bg-neutral-50 transition-colors"
                   >
                     {link.name}
                   </a>
@@ -455,17 +452,17 @@ export default function LaunchDetailPage() {
 
             {/* Pricing & Offers */}
             {(launch.pricing_type !== 'free' || launch.special_offer || launch.promo_code) && (
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Pricing & Offers</h3>
+              <div className="card p-6">
+                <h3 className="text-lg font-semibold text-black mb-4">Pricing & Offers</h3>
                 
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-gray-400" />
+                    <DollarSign className="w-5 h-5 text-neutral-400" />
                     <span className="capitalize">{launch.pricing_type}</span>
                   </div>
 
                   {launch.pricing_details && (
-                    <p className="text-gray-700">{launch.pricing_details}</p>
+                    <p className="text-neutral-600">{launch.pricing_details}</p>
                   )}
 
                   {launch.promo_code && (
@@ -493,8 +490,8 @@ export default function LaunchDetailPage() {
             )}
 
             {/* Comments */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="card p-6">
+              <h3 className="text-lg font-semibold text-black mb-4">
                 Comments ({comments.length})
               </h3>
 
@@ -506,12 +503,12 @@ export default function LaunchDetailPage() {
                     onChange={(e) => setNewComment(e.target.value)}
                     placeholder="Share your thoughts about this launch..."
                     rows={3}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent mb-3"
+                    className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none mb-3"
                   />
                   <button
                     type="submit"
                     disabled={submittingComment || !newComment.trim()}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2 bg-uw-purple text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {submittingComment ? 'Posting...' : 'Post Comment'}
                   </button>
@@ -538,19 +535,19 @@ export default function LaunchDetailPage() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-medium text-gray-900">{comment.profiles.display_name}</span>
-                          <span className="text-gray-500 text-sm">@{comment.profiles.username}</span>
-                          <span className="text-gray-500 text-sm">•</span>
-                          <span className="text-gray-500 text-sm">{formatDate(comment.created_at)}</span>
+                          <span className="font-medium text-black">{comment.profiles.display_name}</span>
+                          <span className="text-neutral-500 text-sm">@{comment.profiles.username}</span>
+                          <span className="text-neutral-500 text-sm">•</span>
+                          <span className="text-neutral-500 text-sm">{formatDate(comment.created_at)}</span>
                         </div>
-                        <p className="text-gray-700">{comment.content}</p>
+                        <p className="text-neutral-600">{comment.content}</p>
                       </div>
                     </div>
                   </div>
                 ))}
                 
                 {comments.length === 0 && (
-                  <p className="text-gray-500 text-center py-8">No comments yet. Be the first to share your thoughts!</p>
+                  <p className="text-neutral-500 text-center py-8">No comments yet. Be the first to share your thoughts!</p>
                 )}
               </div>
             </div>
@@ -559,8 +556,8 @@ export default function LaunchDetailPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Creator Info */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Created by</h3>
+            <div className="card p-6">
+              <h3 className="text-lg font-semibold text-black mb-4">Created by</h3>
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
                   {launch.profiles.avatar_url ? (
@@ -576,11 +573,11 @@ export default function LaunchDetailPage() {
                   )}
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900">{launch.profiles.display_name}</h4>
-                  <p className="text-gray-600 text-sm">@{launch.profiles.username}</p>
+                  <h4 className="font-medium text-black">{launch.profiles.display_name}</h4>
+                  <p className="text-neutral-600 text-sm">@{launch.profiles.username}</p>
                   <button
                     onClick={() => router.push(`/profile/${launch.profiles.username}`)}
-                    className="text-purple-600 hover:text-purple-700 text-sm"
+                    className="text-uw-purple hover:text-purple-700 text-sm"
                   >
                     View Profile
                   </button>
@@ -589,20 +586,20 @@ export default function LaunchDetailPage() {
             </div>
 
             {/* Stats */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Launch Stats</h3>
+            <div className="card p-6">
+              <h3 className="text-lg font-semibold text-black mb-4">Launch Stats</h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600">Votes</span>
-                  <span className="font-semibold text-gray-900">{launch.votes_count}</span>
+                  <span className="text-neutral-600">Votes</span>
+                  <span className="font-semibold text-black">{launch.votes_count}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600">Views</span>
-                  <span className="font-semibold text-gray-900">{launch.views_count}</span>
+                  <span className="text-neutral-600">Views</span>
+                  <span className="font-semibold text-black">{launch.views_count}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600">Comments</span>
-                  <span className="font-semibold text-gray-900">{launch.comments_count}</span>
+                  <span className="text-neutral-600">Comments</span>
+                  <span className="font-semibold text-black">{launch.comments_count}</span>
                 </div>
               </div>
             </div>

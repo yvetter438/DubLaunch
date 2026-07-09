@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import { getCachedLeaderboard } from '@/lib/supabase/server-cache'
-import Header from '@/components/Header'
 import LeaderboardClient from './LeaderboardClient'
 
 // Revalidate every hour (3600 seconds)
@@ -34,13 +33,11 @@ export default async function LeaderboardPage() {
   const launches = await getCachedLeaderboard(50) as unknown as Launch[]
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <Suspense fallback={
+    <div className="min-h-screen bg-white pt-28">      <Suspense fallback={
         <div className="max-w-6xl mx-auto px-4 py-8">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading leaderboard...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-uw-purple mx-auto"></div>
+            <p className="mt-4 text-neutral-600">Loading leaderboard...</p>
           </div>
         </div>
       }>

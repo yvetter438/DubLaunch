@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import { getCachedLaunches } from '@/lib/supabase/server-cache'
-import Header from '@/components/Header'
 import DiscoverClient from './DiscoverClient'
 
 // Revalidate every hour (3600 seconds)
@@ -37,13 +36,11 @@ export default async function DiscoverPage() {
   const initialLaunches = await getCachedLaunches() as unknown as Launch[]
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <Suspense fallback={
+    <div className="min-h-screen bg-white pt-28">      <Suspense fallback={
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-uw-purple mx-auto"></div>
+            <p className="mt-4 text-neutral-600">Loading...</p>
           </div>
         </div>
       }>

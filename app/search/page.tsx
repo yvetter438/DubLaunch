@@ -2,7 +2,6 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import Header from '@/components/Header'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { Search, User, Rocket, Calendar, Eye, Heart } from 'lucide-react'
@@ -159,9 +158,9 @@ function SearchPageContent() {
 
   const getResultIcon = (type: string) => {
     switch (type) {
-      case 'launch': return <Rocket className="w-5 h-5 text-purple-600" />
+      case 'launch': return <Rocket className="w-5 h-5 text-uw-purple" />
       case 'user': return <User className="w-5 h-5 text-blue-600" />
-      default: return <Search className="w-5 h-5 text-gray-600" />
+      default: return <Search className="w-5 h-5 text-neutral-600" />
     }
   }
 
@@ -174,31 +173,29 @@ function SearchPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <div className="min-h-screen bg-white pt-28">      
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Search Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Search DubLaunch</h1>
-          <p className="text-gray-600">Find projects and users</p>
+          <h1 className="text-3xl font-bold text-black mb-2">Search DubLaunch</h1>
+          <p className="text-neutral-600">Find projects and users</p>
         </div>
 
         {/* Search Form */}
         <form onSubmit={handleSearch} className="mb-8">
           <div className="relative max-w-2xl">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search for projects or users..."
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600 text-lg"
+              className="w-full pl-12 pr-4 py-3 border border-black/10 focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-uw-purple text-lg"
             />
             <button
               type="submit"
               disabled={loading}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:opacity-50 transition-colors"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-uw-purple text-white rounded-md hover:opacity-90 disabled:opacity-50 transition-colors"
             >
               {loading ? 'Searching...' : 'Search'}
             </button>
@@ -218,8 +215,8 @@ function SearchPageContent() {
                 onClick={() => handleTypeChange(key as any)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                   selectedType === key
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
+                    ? 'bg-uw-purple text-white'
+                    : 'bg-white text-neutral-600 hover:bg-neutral-50 border border-gray-300'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -234,12 +231,12 @@ function SearchPageContent() {
           <div>
             {loading ? (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
-                <p className="text-gray-600">Searching...</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-uw-purple mx-auto mb-4"></div>
+                <p className="text-neutral-600">Searching...</p>
               </div>
             ) : results.length > 0 ? (
               <div>
-                <p className="text-gray-600 mb-6">
+                <p className="text-neutral-600 mb-6">
                   Found {results.length} result{results.length !== 1 ? 's' : ''} for "{query}"
                 </p>
                 
@@ -259,21 +256,21 @@ function SearchPageContent() {
                         {/* Content */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center space-x-2 mb-2">
-                            <h3 className="text-lg font-semibold text-gray-900 truncate">
+                            <h3 className="text-lg font-semibold text-black truncate">
                               {result.title}
                             </h3>
                             {result.category && (
-                              <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                              <span className="px-2 py-1 bg-gray-100 text-neutral-600 text-xs rounded-full">
                                 {result.category}
                               </span>
                             )}
                           </div>
 
-                          <p className="text-gray-600 mb-3 line-clamp-2">
+                          <p className="text-neutral-600 mb-3 line-clamp-2">
                             {result.description}
                           </p>
 
-                          <div className="flex items-center space-x-4 text-sm text-gray-500">
+                          <div className="flex items-center space-x-4 text-sm text-neutral-500">
                             {result.author && (
                               <span>by {result.author}</span>
                             )}
@@ -310,9 +307,9 @@ function SearchPageContent() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <Search className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No results found</h3>
-                <p className="text-gray-600">
+                <Search className="w-12 h-12 text-neutral-400 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-black mb-2">No results found</h3>
+                <p className="text-neutral-600">
                   Try searching with different keywords or browse our categories.
                 </p>
               </div>
@@ -323,9 +320,9 @@ function SearchPageContent() {
         {/* No search yet */}
         {!hasSearched && (
           <div className="text-center py-12">
-            <Search className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-medium text-gray-900 mb-2">Start searching</h3>
-            <p className="text-gray-600">
+            <Search className="w-16 h-16 text-neutral-400 mx-auto mb-4" />
+            <h3 className="text-xl font-medium text-black mb-2">Start searching</h3>
+            <p className="text-neutral-600">
               Search for projects or users to get started.
             </p>
           </div>

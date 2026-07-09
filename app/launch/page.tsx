@@ -10,7 +10,6 @@ import {
   Video, Tag, Users, DollarSign, 
   Gift, Calendar, Check
 } from 'lucide-react'
-import Header from '@/components/Header'
 import toast from 'react-hot-toast'
 
 interface LaunchFormData {
@@ -244,10 +243,10 @@ export default function LaunchPage() {
       case 1:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">Basic Information</h3>
+            <h3 className="text-xl font-semibold text-black">Basic Information</h3>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Project Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -255,14 +254,14 @@ export default function LaunchPage() {
                 maxLength={40}
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="Enter your project name (max 40 characters)"
               />
-              <p className="mt-1 text-sm text-gray-500">{formData.name.length}/40 characters</p>
+              <p className="mt-1 text-sm text-neutral-500">{formData.name.length}/40 characters</p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Tagline <span className="text-red-500">*</span>
               </label>
               <input
@@ -270,27 +269,27 @@ export default function LaunchPage() {
                 maxLength={60}
                 value={formData.tagline}
                 onChange={(e) => handleInputChange('tagline', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="A catchy one-liner about your project (max 60 characters)"
               />
-              <p className="mt-1 text-sm text-gray-500">{formData.tagline.length}/60 characters</p>
+              <p className="mt-1 text-sm text-neutral-500">{formData.tagline.length}/60 characters</p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Website URL <span className="text-red-500">*</span>
               </label>
               <input
                 type="url"
                 value={formData.website_url}
                 onChange={(e) => handleInputChange('website_url', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="https://yourproject.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Description <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -298,10 +297,10 @@ export default function LaunchPage() {
                 rows={4}
                 value={formData.description}
                 onChange={(e) => handleInputChange('description', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="Describe your project in detail (max 300 characters)"
               />
-              <p className="mt-1 text-sm text-gray-500">{formData.description.length}/300 characters</p>
+              <p className="mt-1 text-sm text-neutral-500">{formData.description.length}/300 characters</p>
             </div>
           </div>
         )
@@ -309,51 +308,51 @@ export default function LaunchPage() {
       case 2:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">Additional Links</h3>
+            <h3 className="text-xl font-semibold text-black">Additional Links</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-neutral-600 mb-2">
                   Apple App Store
                 </label>
                 <input
                   type="url"
                   value={formData.apple_store_url}
                   onChange={(e) => handleInputChange('apple_store_url', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                   placeholder="https://apps.apple.com/..."
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-neutral-600 mb-2">
                   Google Play Store
                 </label>
                 <input
                   type="url"
                   value={formData.android_store_url}
                   onChange={(e) => handleInputChange('android_store_url', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                   placeholder="https://play.google.com/..."
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-neutral-600 mb-2">
                   Twitter/X Account
                 </label>
                 <input
                   type="url"
                   value={formData.twitter_url}
                   onChange={(e) => handleInputChange('twitter_url', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                   placeholder="https://x.com/yourproject"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Other Links
               </label>
               {formData.other_links.map((link, index) => (
@@ -363,14 +362,14 @@ export default function LaunchPage() {
                     placeholder="Link name (e.g., GitHub, Discord)"
                     value={link.name}
                     onChange={(e) => updateOtherLink(index, 'name', e.target.value)}
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="flex-1 px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                   />
                   <input
                     type="url"
                     placeholder="https://..."
                     value={link.url}
                     onChange={(e) => updateOtherLink(index, 'url', e.target.value)}
-                    className="flex-2 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="flex-2 px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                   />
                   <button
                     type="button"
@@ -384,7 +383,7 @@ export default function LaunchPage() {
               <button
                 type="button"
                 onClick={addOtherLink}
-                className="flex items-center gap-2 px-4 py-2 text-purple-600 hover:bg-purple-50 rounded-lg border border-purple-200"
+                className="flex items-center gap-2 px-4 py-2 text-uw-purple hover:bg-purple-50 rounded-lg border border-purple-200"
               >
                 <LinkIcon className="w-4 h-4" />
                 Add Link
@@ -396,17 +395,17 @@ export default function LaunchPage() {
       case 3:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">Media & Demo</h3>
+            <h3 className="text-xl font-semibold text-black">Media & Demo</h3>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Thumbnail Image URL
               </label>
               <input
                 type="url"
                 value={formData.thumbnail_url}
                 onChange={(e) => handleInputChange('thumbnail_url', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="https://example.com/thumbnail.png"
               />
               {formData.thumbnail_url && (
@@ -424,14 +423,14 @@ export default function LaunchPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Demo Video (Loom/YouTube)
               </label>
               <input
                 type="url"
                 value={formData.demo_video_url}
                 onChange={(e) => handleInputChange('demo_video_url', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="https://loom.com/share/... or https://youtube.com/watch?v=..."
               />
             </div>
@@ -441,16 +440,16 @@ export default function LaunchPage() {
       case 4:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">Categories & Tags</h3>
+            <h3 className="text-xl font-semibold text-black">Categories & Tags</h3>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Primary Category <span className="text-red-500">*</span>
               </label>
               <select
                 value={formData.primary_category}
                 onChange={(e) => handleInputChange('primary_category', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
               >
                 <option value="">Select a category</option>
                 {CATEGORIES.map(category => (
@@ -460,7 +459,7 @@ export default function LaunchPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Tags (up to 3)
               </label>
               <div className="flex flex-wrap gap-2 mb-3">
@@ -473,7 +472,7 @@ export default function LaunchPage() {
                     <button
                       type="button"
                       onClick={() => removeTag(tag)}
-                      className="text-purple-600 hover:text-purple-800"
+                      className="text-uw-purple hover:text-purple-800"
                     >
                       ×
                     </button>
@@ -488,7 +487,7 @@ export default function LaunchPage() {
                     type="button"
                     onClick={() => addTag(category)}
                     disabled={formData.tags.length >= 3}
-                    className="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-neutral-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     + {category}
                   </button>
@@ -501,10 +500,10 @@ export default function LaunchPage() {
       case 5:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">Pricing & Offers</h3>
+            <h3 className="text-xl font-semibold text-black">Pricing & Offers</h3>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Pricing Type
               </label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -516,7 +515,7 @@ export default function LaunchPage() {
                     className={`p-3 rounded-lg border text-center ${
                       formData.pricing_type === type.value
                         ? 'border-purple-500 bg-purple-50 text-purple-700'
-                        : 'border-gray-300 hover:bg-gray-50'
+                        : 'border-gray-300 hover:bg-neutral-50'
                     }`}
                   >
                     {type.label}
@@ -527,14 +526,14 @@ export default function LaunchPage() {
 
             {formData.pricing_type !== 'free' && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-neutral-600 mb-2">
                   Pricing Details
                 </label>
                 <textarea
                   rows={3}
                   value={formData.pricing_details}
                   onChange={(e) => handleInputChange('pricing_details', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                   placeholder="Describe your pricing model..."
                 />
               </div>
@@ -542,40 +541,40 @@ export default function LaunchPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-neutral-600 mb-2">
                   Promo Code
                 </label>
                 <input
                   type="text"
                   value={formData.promo_code}
                   onChange={(e) => handleInputChange('promo_code', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                   placeholder="DUBLAUNCH2024"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-neutral-600 mb-2">
                   Offer Expiry Date
                 </label>
                 <input
                   type="date"
                   value={formData.offer_expiry_date}
                   onChange={(e) => handleInputChange('offer_expiry_date', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 Special Offer
               </label>
               <textarea
                 rows={3}
                 value={formData.special_offer}
                 onChange={(e) => handleInputChange('special_offer', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="Any special offers for DubLaunch users?"
               />
             </div>
@@ -585,29 +584,29 @@ export default function LaunchPage() {
       case 6:
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">Final Details</h3>
+            <h3 className="text-xl font-semibold text-black">Final Details</h3>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-neutral-600 mb-2">
                 First Comment (Why & How)
               </label>
               <textarea
                 rows={5}
                 value={formData.first_comment}
                 onChange={(e) => handleInputChange('first_comment', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-black/10 focus:border-uw-purple outline-none"
                 placeholder="Explain the story behind your project - why you built it, how it works, what makes it special..."
               />
             </div>
 
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h4 className="font-medium text-gray-900 mb-4">Preview</h4>
+              <h4 className="font-medium text-black mb-4">Preview</h4>
               <div className="space-y-3">
                 <div>
                   <h3 className="text-lg font-semibold">{formData.name || 'Project Name'}</h3>
-                  <p className="text-gray-600">{formData.tagline || 'Project tagline'}</p>
+                  <p className="text-neutral-600">{formData.tagline || 'Project tagline'}</p>
                 </div>
-                <p className="text-sm text-gray-700">{formData.description || 'Project description'}</p>
+                <p className="text-sm text-neutral-600">{formData.description || 'Project description'}</p>
                 <div className="flex flex-wrap gap-2">
                   {formData.tags.map(tag => (
                     <span key={tag} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">
@@ -627,29 +626,27 @@ export default function LaunchPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white pt-28 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-uw-purple mx-auto"></div>
+          <p className="mt-4 text-neutral-600">Loading...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <div className="min-h-screen bg-white pt-28">      
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-xl shadow-sm">
+        <div className="card">
           {/* Header */}
           <div className="border-b border-gray-200 px-6 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Launch Your Project</h1>
-                <p className="text-gray-600">Share your amazing project with the UW community</p>
+                <h1 className="text-2xl font-bold text-black">Launch Your Project</h1>
+                <p className="text-neutral-600">Share your amazing project with the UW community</p>
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-neutral-500">
                 Step {currentStep} of {totalSteps}
               </div>
             </div>
@@ -661,7 +658,7 @@ export default function LaunchPage() {
                   <div
                     key={i}
                     className={`flex-1 h-2 rounded-full ${
-                      i + 1 <= currentStep ? 'bg-purple-600' : 'bg-gray-200'
+                      i + 1 <= currentStep ? 'bg-uw-purple' : 'bg-gray-200'
                     }`}
                   />
                 ))}
@@ -680,7 +677,7 @@ export default function LaunchPage() {
               <button
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-4 py-2 text-neutral-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ChevronLeft className="w-4 h-4" />
                 Previous
@@ -691,7 +688,7 @@ export default function LaunchPage() {
                   <>
                     <button
                       onClick={() => setCurrentStep(1)}
-                      className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800"
+                      className="flex items-center gap-2 px-4 py-2 text-neutral-600 hover:text-gray-800"
                     >
                       <Eye className="w-4 h-4" />
                       Preview
@@ -699,7 +696,7 @@ export default function LaunchPage() {
                     <button
                       onClick={handleSubmit}
                       disabled={isLoading || !formData.name || !formData.tagline || !formData.description || !formData.website_url || !formData.primary_category}
-                      className="flex items-center gap-2 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex items-center gap-2 px-6 py-2 bg-uw-purple text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Save className="w-4 h-4" />
                       {isLoading ? 'Publishing...' : 'Publish Launch'}
@@ -708,7 +705,7 @@ export default function LaunchPage() {
                 ) : (
                   <button
                     onClick={nextStep}
-                    className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                    className="flex items-center gap-2 px-4 py-2 bg-uw-purple text-white rounded-lg hover:opacity-90"
                   >
                     Next
                     <ChevronRight className="w-4 h-4" />

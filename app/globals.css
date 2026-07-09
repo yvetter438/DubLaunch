@@ -29,39 +29,49 @@ a {
   text-decoration: none;
 }
 
-/* Shared utility classes for non-homepage pages */
-.btn-primary {
-  @apply bg-uw-purple hover:bg-uw-purple/90 text-white px-4 py-2 rounded-lg font-medium transition-colors;
-}
-
-.btn-secondary {
-  @apply bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg font-medium transition-colors;
-}
-
-.card {
-  @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6;
-}
-
-.input-field {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple;
-}
-
-/* Bold Editorial Studio — homepage only */
 @layer components {
-  .home-editorial .editorial-mono {
+  .editorial-mono {
     @apply font-mono text-sm uppercase tracking-[0.1em];
   }
 
-  .home-editorial .marquee-container:hover .marquee-track {
+  .btn-primary {
+    @apply bg-uw-purple text-white px-6 py-3 text-sm font-medium
+      transition-opacity duration-300 hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply border border-black/10 bg-white px-6 py-3 text-sm font-medium text-black
+      transition-colors duration-300 hover:border-uw-purple hover:text-uw-purple;
+  }
+
+  .card {
+    @apply border border-black/10 bg-white p-6 md:p-8;
+  }
+
+  .input-field {
+    @apply w-full border-b border-black/10 bg-transparent px-0 py-3 text-base
+      outline-none placeholder:text-neutral-400
+      focus:border-uw-purple transition-colors duration-300;
+  }
+
+  .editorial-heading {
+    @apply text-4xl font-bold tracking-[-0.04em] text-black md:text-5xl;
+  }
+
+  .editorial-subheading {
+    @apply text-lg tracking-[-0.02em] text-neutral-600;
+  }
+
+  .marquee-container:hover .marquee-track {
     animation-play-state: paused;
   }
 
-  .home-editorial .marquee-track {
+  .marquee-track {
     animation: marquee 30s linear infinite;
   }
 
   @media (max-width: 767px) {
-    .home-editorial {
+    .editorial {
       cursor: auto;
     }
   }
@@ -73,5 +83,14 @@ a {
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes text-reveal {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
