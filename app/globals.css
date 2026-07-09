@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
 }
 
 * {
@@ -24,12 +21,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-rgb));
 }
 
 a {
@@ -37,6 +29,7 @@ a {
   text-decoration: none;
 }
 
+/* Shared utility classes for non-homepage pages */
 .btn-primary {
   @apply bg-uw-purple hover:bg-uw-purple/90 text-white px-4 py-2 rounded-lg font-medium transition-colors;
 }
@@ -51,4 +44,34 @@ a {
 
 .input-field {
   @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple;
+}
+
+/* Bold Editorial Studio — homepage only */
+@layer components {
+  .home-editorial .editorial-mono {
+    @apply font-mono text-sm uppercase tracking-[0.1em];
+  }
+
+  .home-editorial .marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .home-editorial .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+
+  @media (max-width: 767px) {
+    .home-editorial {
+      cursor: auto;
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }

@@ -2,9 +2,13 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
-import Footer from '@/components/Footer'
+import ConditionalFooter from '@/components/home/ConditionalFooter'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: 'DubLaunch - Discover Amazing Projects by UW Students',
@@ -29,16 +33,18 @@ export default function RootLayout({
           `,
         }} />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         {children}
-        <Footer />
-        <Toaster 
+        <ConditionalFooter />
+        <Toaster
           position="top-right"
           toastOptions={{
             duration: 4000,
             style: {
-              background: '#363636',
-              color: '#fff',
+              background: '#FFFFFF',
+              color: '#000000',
+              border: '1px solid rgba(0,0,0,0.1)',
+              borderRadius: 0,
             },
           }}
         />

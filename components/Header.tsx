@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { Search, Menu, X, User, LogOut, Plus } from 'lucide-react'
+import { Search, Menu, X, User, Plus } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function Header() {
@@ -40,11 +40,12 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-100">
+    <header className="bg-stone-obsidian border-b border-vein-ash/10 relative z-50 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-vein-magma/40 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 relative">
               <Image
                 src="/logo.svg"
@@ -54,21 +55,23 @@ export default function Header() {
                 priority
               />
             </div>
-            <span className="font-bold text-xl text-gray-900">DubLaunch</span>
+            <span className="font-display font-semibold text-2xl text-vein-ash text-etched tracking-wide group-hover:text-vein-gold transition-all duration-700 ease-tectonic">
+              DubLaunch
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/discover" className="text-gray-700 hover:text-uw-purple transition-colors">
+            <Link href="/discover" className="text-vein-ash/70 hover:text-vein-magma transition-all duration-700 ease-tectonic text-sm tracking-wide uppercase">
               Discover
             </Link>
-            <Link href="/launch" className="text-gray-700 hover:text-uw-purple transition-colors">
+            <Link href="/launch" className="text-vein-ash/70 hover:text-vein-magma transition-all duration-700 ease-tectonic text-sm tracking-wide uppercase">
               Launch
             </Link>
-            <Link href="/leaderboard" className="text-gray-700 hover:text-uw-purple transition-colors">
+            <Link href="/leaderboard" className="text-vein-ash/70 hover:text-vein-magma transition-all duration-700 ease-tectonic text-sm tracking-wide uppercase">
               Leaderboard
             </Link>
-            <Link href="/forums" className="text-gray-700 hover:text-uw-purple transition-colors">
+            <Link href="/forums" className="text-vein-ash/70 hover:text-vein-magma transition-all duration-700 ease-tectonic text-sm tracking-wide uppercase">
               Community
             </Link>
           </nav>
@@ -76,14 +79,14 @@ export default function Header() {
           {/* Search Bar */}
           <div className="hidden md:flex items-center space-x-4">
             <form onSubmit={handleSearch} className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-vein-ash/40 w-4 h-4" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyPress={handleSearchKeyPress}
                 placeholder="Search projects, users..."
-                className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-uw-purple/20 focus:border-uw-purple"
+                className="pl-10 pr-4 py-2 w-64 bg-stone-basalt border border-vein-ash/15 text-vein-ash placeholder:text-vein-ash/35 rounded-none focus:outline-none focus:border-vein-magma transition-all duration-700 ease-tectonic"
               />
             </form>
           </div>
@@ -96,16 +99,16 @@ export default function Header() {
                   <Plus className="w-4 h-4" />
                   <span>Launch</span>
                 </Link>
-                <Link href="/profile" className="flex items-center space-x-2 text-gray-700 hover:text-uw-purple transition-colors">
-                  <div className="w-8 h-8 bg-uw-purple rounded-full flex items-center justify-center">
-                    <User className="w-4 h-4 text-white" />
+                <Link href="/profile" className="flex items-center space-x-2 text-vein-ash/70 hover:text-vein-gold transition-all duration-700 ease-tectonic">
+                  <div className="w-8 h-8 bg-stone-granite border border-vein-magma/50 flex items-center justify-center">
+                    <User className="w-4 h-4 text-vein-ash" />
                   </div>
                   <span>Profile</span>
                 </Link>
               </div>
             ) : (
               <div className="flex items-center space-x-4">
-                <Link href="/auth/login" className="text-gray-700 hover:text-uw-purple transition-colors">
+                <Link href="/auth/login" className="text-vein-ash/70 hover:text-vein-gold transition-all duration-700 ease-tectonic">
                   Sign In
                 </Link>
                 <Link href="/auth/register" className="btn-primary">
@@ -117,7 +120,7 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 text-vein-ash hover:bg-stone-basalt transition-all duration-700 ease-tectonic border border-transparent hover:border-vein-ash/10"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -126,33 +129,33 @@ export default function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
+          <div className="md:hidden py-4 border-t border-vein-ash/10 bg-stone-basalt">
             <nav className="flex flex-col space-y-4">
-              <Link href="/discover" className="text-gray-700 hover:text-uw-purple transition-colors">
+              <Link href="/discover" className="text-vein-ash/80 hover:text-vein-magma transition-all duration-700 ease-tectonic uppercase tracking-wide text-sm">
                 Discover
               </Link>
-              <Link href="/launch" className="text-gray-700 hover:text-uw-purple transition-colors">
+              <Link href="/launch" className="text-vein-ash/80 hover:text-vein-magma transition-all duration-700 ease-tectonic uppercase tracking-wide text-sm">
                 Launch
               </Link>
-              <Link href="/leaderboard" className="text-gray-700 hover:text-uw-purple transition-colors">
+              <Link href="/leaderboard" className="text-vein-ash/80 hover:text-vein-magma transition-all duration-700 ease-tectonic uppercase tracking-wide text-sm">
                 Leaderboard
               </Link>
-              <Link href="/forums" className="text-gray-700 hover:text-uw-purple transition-colors">
+              <Link href="/forums" className="text-vein-ash/80 hover:text-vein-magma transition-all duration-700 ease-tectonic uppercase tracking-wide text-sm">
                 Community
               </Link>
-              <div className="pt-4 border-t border-gray-100">
+              <div className="pt-4 border-t border-vein-ash/10">
                 {isLoggedIn ? (
                   <div className="flex flex-col space-y-2">
                     <Link href="/launch" className="btn-primary text-center">
                       Launch Project
                     </Link>
-                    <Link href="/profile" className="text-gray-700 hover:text-uw-purple transition-colors">
+                    <Link href="/profile" className="text-vein-ash/80 hover:text-vein-gold transition-all duration-700 ease-tectonic">
                       My Profile
                     </Link>
                   </div>
                 ) : (
                   <div className="flex flex-col space-y-2">
-                    <Link href="/auth/login" className="text-gray-700 hover:text-uw-purple transition-colors">
+                    <Link href="/auth/login" className="text-vein-ash/80 hover:text-vein-gold transition-all duration-700 ease-tectonic">
                       Sign In
                     </Link>
                     <Link href="/auth/register" className="btn-primary text-center">
