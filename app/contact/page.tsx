@@ -1,157 +1,95 @@
-'use client'
+import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
 
-import { Mail, MessageSquare, Github, Twitter } from 'lucide-react'
+const CONTACT_METHODS = [
+  {
+    label: 'Email',
+    title: 'Email us',
+    description: 'General inquiries, feedback, support, or partnership opportunities.',
+    links: [
+      { href: 'mailto:support@dublaunch.io', label: 'support@dublaunch.io' },
+      { href: 'mailto:info@dublaunch.io', label: 'info@dublaunch.io' },
+    ],
+  },
+  {
+    label: 'Community',
+    title: 'Join the community',
+    description: 'Connect with other UW students and get help from the DubLaunch community.',
+    links: [{ href: '/forums', label: 'Join Discord' }],
+  },
+  {
+    label: 'GitHub',
+    title: 'Bug reports & features',
+    description: 'Report bugs, request features, or contribute to the codebase.',
+    links: [
+      {
+        href: 'https://github.com/yvetter438/DubLaunch',
+        label: 'github.com/yvetter438/DubLaunch',
+        external: true,
+      },
+    ],
+  },
+  {
+    label: 'Social',
+    title: 'Follow us',
+    description: 'Announcements, new features, and highlights from the UW builder community.',
+    links: [{ href: 'https://x.com/dub_launch', label: '@dub_launch', external: true }],
+  },
+]
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white pt-28">      
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-black mb-4">Contact Us</h1>
-          <p className="text-xl text-neutral-600">
-            Get in touch with the DubLaunch team
+    <div className="min-h-screen bg-white pt-28 pb-16">
+      <div className="mx-auto max-w-4xl px-6 md:px-24">
+        <div className="mb-12 text-center">
+          <p className="editorial-mono mb-4 text-uw-purple">Contact</p>
+          <h1 className="editorial-heading mb-4">Get in touch</h1>
+          <p className="editorial-subheading mx-auto max-w-2xl">
+            Questions, feedback, or ideas — we&apos;d love to hear from you.
           </p>
         </div>
 
-        {/* Contact Information - Full Width */}
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-black mb-8 text-center">Get in Touch</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {/* Email Support */}
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-7 h-7 text-uw-purple" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">Email Us</h3>
-                  <p className="text-neutral-600 mb-3 text-sm">
-                    General inquiries, feedback, support, or partnership opportunities
-                  </p>
-                  <div className="space-y-2">
-                    <a 
-                      href="mailto:support@dublaunch.io" 
-                      className="block text-uw-purple hover:text-purple-700 font-medium text-sm"
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {CONTACT_METHODS.map((method) => (
+            <div key={method.label} className="card">
+              <p className="editorial-mono mb-3 text-uw-purple">{method.label}</p>
+              <h2 className="mb-3 text-xl font-bold tracking-tight">{method.title}</h2>
+              <p className="mb-6 text-neutral-600">{method.description}</p>
+              <div className="space-y-2">
+                {method.links.map((link) =>
+                  link.external ? (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-uw-purple transition-colors hover:text-uw-purple/80"
                     >
-                      support@dublaunch.io
+                      {link.label}
+                      <ArrowUpRight className="h-4 w-4" />
                     </a>
-                    <a 
-                      href="mailto:info@dublaunch.io" 
-                      className="block text-uw-purple hover:text-purple-700 font-medium text-sm"
+                  ) : link.href.startsWith('mailto:') ? (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className="block text-sm font-medium text-uw-purple transition-colors hover:text-uw-purple/80"
                     >
-                      info@dublaunch.io
+                      {link.label}
                     </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Community */}
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="w-7 h-7 text-blue-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">Community</h3>
-                  <p className="text-neutral-600 mb-3 text-sm">
-                    Join our Discord to connect with other UW students and get community support
-                  </p>
-                  <a 
-                    href="/forums" 
-                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm"
-                  >
-                    Join Discord
-                    <span className="ml-1">→</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* GitHub */}
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Github className="w-7 h-7 text-neutral-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">Bug Reports & Features</h3>
-                  <p className="text-neutral-600 mb-3 text-sm">
-                    Report bugs, request features, or contribute to the codebase
-                  </p>
-                  <a 
-                    href="https://github.com/yvetter438/DubLaunch" 
-                    className="inline-flex items-center text-neutral-600 hover:text-black font-medium text-sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    github.com/yvetter438/DubLaunch
-                    <span className="ml-1">↗</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Twitter/X */}
-              <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 bg-sky-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Twitter className="w-7 h-7 text-sky-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">Follow Us</h3>
-                  <p className="text-neutral-600 mb-3 text-sm">
-                    Stay updated with announcements, new features, and community highlights
-                  </p>
-                  <a 
-                    href="https://x.com/dub_launch" 
-                    className="inline-flex items-center text-sky-600 hover:text-sky-700 font-medium text-sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    @dub_launch
-                    <span className="ml-1">↗</span>
-                  </a>
-                </div>
+                  ) : (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="inline-flex items-center gap-1 text-sm font-medium text-uw-purple transition-colors hover:text-uw-purple/80"
+                    >
+                      {link.label}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  )
+                )}
               </div>
             </div>
-
-            {/* What to Reach Out For */}
-            <div className="border-t border-gray-200 pt-8">
-              <h3 className="text-xl font-semibold text-black mb-6 text-center">What Can We Help You With?</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div className="bg-purple-50 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-purple-900">General Questions</p>
-                </div>
-                <div className="bg-blue-50 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-blue-900">Technical Support</p>
-                </div>
-                <div className="bg-green-50 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-green-900">Feature Requests</p>
-                </div>
-                <div className="bg-red-50 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-red-900">Bug Reports</p>
-                </div>
-                <div className="bg-yellow-50 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-yellow-900">Partnerships</p>
-                </div>
-                <div className="bg-indigo-50 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-indigo-900">Feedback</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Response Time Info */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mt-12">
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">Response Times</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-blue-800">
-            <div>
-              <span className="font-medium">General Questions:</span> 1-2 business days
-            </div>
-            <div>
-              <span className="font-medium">Bug Reports:</span> 24-48 hours
-            </div>
-            <div>
-              <span className="font-medium">Technical Support:</span> 2-3 business days
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
