@@ -25,16 +25,16 @@ export default function HomeProjectGrid() {
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-          {[1, 2, 3, 4].map((i) => (
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
             <div key={i} className="animate-pulse">
-              <div className="aspect-[4/3] rounded-xl bg-neutral-100" />
+              <div className="aspect-square rounded-xl bg-neutral-100" />
               <div className="mt-4 h-6 w-2/3 bg-neutral-100" />
             </div>
           ))}
         </div>
       ) : launches.length > 0 ? (
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {launches.map((launch) => {
             const year = new Date(launch.created_at).getFullYear().toString()
 
@@ -45,7 +45,7 @@ export default function HomeProjectGrid() {
                 className="group block"
                 data-cursor-hover
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-neutral-100">
+                <div className="relative aspect-square overflow-hidden rounded-xl bg-neutral-100">
                   {launch.thumbnail_url ? (
                     <Image
                       src={launch.thumbnail_url}
@@ -71,7 +71,7 @@ export default function HomeProjectGrid() {
                     </h3>
                     <span className="editorial-mono shrink-0 text-neutral-500">{year}</span>
                   </div>
-                  <div className="mt-2 flex items-center justify-between gap-4">
+                  <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <span className="editorial-mono text-neutral-500">
                       {launch.primary_category || 'Launch'}
                     </span>

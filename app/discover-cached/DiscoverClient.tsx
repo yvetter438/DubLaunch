@@ -270,13 +270,14 @@ export default function DiscoverClient({ initialLaunches }: DiscoverClientProps)
               {filteredLaunches.map((launch) => (
                 <div
                   key={launch.id}
-                  className="card hover:shadow-md transition-shadow cursor-pointer"
+                  className={`overflow-hidden border border-black/10 bg-white transition-shadow hover:shadow-md cursor-pointer ${
+                    viewMode === 'grid' ? '' : 'card'
+                  }`}
                   onClick={() => router.push(`/launch/${launch.slug}`)}
                 >
                   {viewMode === 'grid' ? (
-                    // Grid View
-                    <div className="p-6">
-                      <div className="relative w-full aspect-square bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg mb-4 overflow-hidden">
+                    <>
+                      <div className="relative aspect-square w-full overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
                         {launch.thumbnail_url ? (
                           <img
                             src={launch.thumbnail_url}
@@ -291,53 +292,54 @@ export default function DiscoverClient({ initialLaunches }: DiscoverClientProps)
                           </div>
                         )}
                       </div>
-                      
+
+                      <div className="p-4">
                       <div className="mb-4">
                         <h3 className="text-lg font-semibold text-black mb-1">{launch.name}</h3>
                         <p className="text-neutral-600 text-sm line-clamp-2">{launch.tagline}</p>
                       </div>
 
-                      <div className="flex items-center justify-between text-sm text-neutral-500 mb-4">
+                      <div className="flex items-center justify-between gap-3 text-sm text-neutral-500 mb-4">
                         <VoteButton 
                           launchId={launch.id} 
                           initialVoteCount={launch.votes_count}
-                          className="text-sm"
+                          className="text-sm shrink-0"
                         />
-                        <span className="flex items-center gap-1">
+                        <span className="flex shrink-0 items-center gap-1">
                           <Eye className="w-4 h-4" />
                           {launch.views_count}
                         </span>
-                        <span className="flex items-center gap-1">
+                        <span className="flex shrink-0 items-center gap-1">
                           <MessageCircle className="w-4 h-4" />
                           {launch.comments_count}
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
-                            {launch.profiles.avatar_url ? (
-                              <img
-                                src={launch.profiles.avatar_url}
-                                alt={launch.profiles.display_name}
-                                className="w-6 h-6 rounded-full object-cover"
-                              />
-                            ) : (
-                              <span className="text-white text-xs font-bold">
-                                {launch.profiles.display_name.charAt(0).toUpperCase()}
-                              </span>
-                            )}
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex min-w-0 items-center gap-2">
+                            <div className="w-6 h-6 shrink-0 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                              {launch.profiles.avatar_url ? (
+                                <img
+                                  src={launch.profiles.avatar_url}
+                                  alt={launch.profiles.display_name}
+                                  className="w-6 h-6 rounded-full object-cover"
+                                />
+                              ) : (
+                                <span className="text-white text-xs font-bold">
+                                  {launch.profiles.display_name.charAt(0).toUpperCase()}
+                                </span>
+                              )}
+                            </div>
+                            <span className="truncate text-sm text-neutral-600">@{launch.profiles.username}</span>
                           </div>
-                          <span className="text-sm text-neutral-600">@{launch.profiles.username}</span>
+                          <span className="shrink-0 text-xs text-neutral-500">{getTimeAgo(launch.created_at)}</span>
                         </div>
-                        <span className="text-xs text-neutral-500">{getTimeAgo(launch.created_at)}</span>
-                      </div>
 
-                      <div className="mt-3 flex items-center justify-between">
-                        <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">
-                          {launch.primary_category}
-                        </span>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">
+                            {launch.primary_category}
+                          </span>
                           {launch.tags.slice(0, 2).map(tag => (
                             <span key={tag} className="px-2 py-1 bg-gray-100 text-neutral-600 text-xs rounded">
                               {tag}
@@ -345,7 +347,8 @@ export default function DiscoverClient({ initialLaunches }: DiscoverClientProps)
                           ))}
                         </div>
                       </div>
-                    </div>
+                      </div>
+                    </>
                   ) : (
                     // List View
                     <div className="p-6">
