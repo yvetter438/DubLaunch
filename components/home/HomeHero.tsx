@@ -8,7 +8,7 @@ import StaggeredText from './StaggeredText'
 const STATS = [
   { value: '13+', label: 'Projects Launched' },
   { value: '25+', label: 'DubLaunchers' },
-  { value: '500K+', label: 'Raised by DubLaunchers' },
+  { value: '$500K+', label: 'Raised by DubLaunchers' },
 ]
 
 export default function HomeHero() {
