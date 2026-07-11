@@ -276,17 +276,19 @@ export default function DiscoverClient({ initialLaunches }: DiscoverClientProps)
                   {viewMode === 'grid' ? (
                     // Grid View
                     <div className="p-6">
-                      <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                      <div className="relative w-full aspect-square bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg mb-4 overflow-hidden">
                         {launch.thumbnail_url ? (
                           <img
                             src={launch.thumbnail_url}
                             alt={launch.name}
-                            className="w-full h-full object-cover"
+                            className="absolute inset-0 h-full w-full object-cover"
                           />
                         ) : (
-                          <span className="text-4xl font-bold text-neutral-400">
-                            {launch.name.charAt(0).toUpperCase()}
-                          </span>
+                          <div className="flex h-full w-full items-center justify-center">
+                            <span className="text-4xl font-bold text-neutral-400">
+                              {launch.name.charAt(0).toUpperCase()}
+                            </span>
+                          </div>
                         )}
                       </div>
                       

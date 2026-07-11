@@ -451,7 +451,7 @@ function DiscoverPageContent() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div key={i} className="card p-6 animate-pulse">
-                    <div className="w-full h-48 bg-gray-200 rounded-lg mb-4"></div>
+                    <div className="w-full aspect-square bg-gray-200 rounded-lg mb-4"></div>
                     <div className="h-4 bg-gray-200 rounded mb-2"></div>
                     <div className="h-3 bg-gray-200 rounded w-3/4"></div>
                   </div>
@@ -494,17 +494,19 @@ function DiscoverPageContent() {
                       {viewMode === 'grid' ? (
                         // Grid View
                         <div className="p-6">
-                          <div className="w-full h-48 bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                          <div className="relative w-full aspect-square bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg mb-4 overflow-hidden">
                             {launch.thumbnail_url ? (
                               <img
                                 src={launch.thumbnail_url}
                                 alt={launch.name}
-                                className="w-full h-full object-cover"
+                                className="absolute inset-0 h-full w-full object-cover"
                               />
                             ) : (
-                              <span className="text-4xl font-bold text-neutral-400">
-                                {launch.name.charAt(0).toUpperCase()}
-                              </span>
+                              <div className="flex h-full w-full items-center justify-center">
+                                <span className="text-4xl font-bold text-neutral-400">
+                                  {launch.name.charAt(0).toUpperCase()}
+                                </span>
+                              </div>
                             )}
                           </div>
                           
