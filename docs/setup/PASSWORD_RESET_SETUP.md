@@ -159,5 +159,5 @@ View password reset activity:
 
 The password reset functionality is complete and ready to use. Just test it with a real email address to verify everything works!
 
-For detailed information, see `PASSWORD_RESET_IMPLEMENTATION.md`.
+For detailed information, see [Password Reset Implementation](../features/PASSWORD_RESET_IMPLEMENTATION.md).
 

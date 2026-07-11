@@ -74,7 +74,7 @@ This project uses Supabase PostgreSQL. You'll need to:
 3. Configure authentication settings
 4. Set up real-time subscriptions (optional)
 
-**Note**: Database setup scripts are not included in this repository for security reasons. Contact the maintainers for database setup instructions.
+**Note**: Database setup scripts live in `sql/` (gitignored for security). See `sql/README.md` for setup order. Contact the maintainers for database setup instructions.
 
 ## 🏗️ Project Structure
 
@@ -90,14 +90,20 @@ DubLaunch/
 │   ├── search/            # Search functionality
 │   └── ...
 ├── components/            # Reusable UI components
-│   ├── Header.tsx         # Navigation header
-│   ├── Footer.tsx         # Site footer
-│   ├── Hero.tsx           # Homepage hero
-│   └── ...
+├── docs/                  # Project documentation
+│   ├── setup/             # Environment & auth setup guides
+│   ├── features/          # Feature implementation docs
+│   └── fixes/             # Bug fix notes & patches
 ├── lib/                   # Utility functions and configurations
 │   ├── supabase/          # Supabase client setup
 │   └── utils/             # Helper functions
 ├── public/                # Static assets
+├── sql/                   # Database scripts (local only, gitignored)
+│   ├── schema/            # Table definitions
+│   ├── migrations/        # Schema changes
+│   ├── policies/          # RLS & auth policies
+│   ├── fixes/             # Data repair scripts
+│   └── debug/             # Diagnostic queries
 └── ...
 ```
 

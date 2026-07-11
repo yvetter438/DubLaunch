@@ -43,22 +43,12 @@ next-env.d.ts
 /public/uploads
 
 # SECURITY: Database and SQL files (contains sensitive structure)
+sql/*
+!sql/README.md
 *.sql
-database-setup.sql
-launches-table.sql
-profiles-table.sql
-votes-table.sql
-comments-table.sql
-forum-tables.sql
-add-slug-to-launches.sql
-fix-rls-policies.sql
-fix-forum-rls-policies.sql
-check-database-state.sql
-test-forum-access.sql
-debug-*.sql
 
 # SECURITY: Environment and setup files
-ENV_SETUP.md
+docs/setup/ENV_SETUP.md
 
 # SECURITY: Debug and test directories
 /app/debug*

@@ -19,7 +19,7 @@ You need to configure these settings in your Supabase Dashboard to enforce UW em
 #### Option A: Email Domain Allowlist (Recommended)
 Unfortunately, Supabase doesn't have a built-in "allowlist" feature in the UI, but we can enforce it through:
 
-1. **Database Trigger** (already created in `enforce-uw-email.sql`)
+1. **Database Trigger** (already created in `sql/policies/enforce-uw-email.sql`)
 2. **Auth Hook** (see below)
 
 ---
@@ -140,7 +140,7 @@ No account created
 
 ## 🚀 Next Steps
 
-1. ✅ Run `enforce-uw-email.sql` in Supabase SQL Editor
+1. ✅ Run `sql/policies/enforce-uw-email.sql` in Supabase SQL Editor
 2. ✅ Update frontend with UW email validation (see register page)
 3. ✅ Test with both valid and invalid emails
 4. ✅ Monitor signup attempts in Supabase Dashboard

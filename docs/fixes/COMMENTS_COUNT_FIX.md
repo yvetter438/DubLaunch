@@ -14,7 +14,7 @@ The `comments_count` field in the `launches` table is out of sync with the actua
 ### Quick Fix (Run This Now!)
 
 1. Open your Supabase SQL Editor
-2. Copy and paste the entire contents of `fix-comments-count.sql`
+2. Copy and paste the entire contents of `sql/fixes/fix-comments-count.sql`
 3. Click "Run"
 
 This will:
@@ -91,8 +91,8 @@ SET comments_count = (
 ## Related Fixes
 
 This is similar to the vote count fix. If you haven't run that yet, you should also run:
-- `fix-votes-now.sql` - Syncs vote counts
-- `increment-views-function.sql` - Fixes view counting
+- `sql/fixes/fix-votes-now.sql` - Syncs vote counts
+- `sql/migrations/increment-views-function.sql` - Fixes view counting
 
 ## Troubleshooting
 

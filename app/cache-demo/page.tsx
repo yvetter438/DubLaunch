@@ -283,7 +283,7 @@ export default function CacheDemoPage() {
         <div className="mt-8 text-center text-sm text-neutral-600">
           <p>
             📚 Read the full documentation: 
-            <code className="mx-2 px-2 py-1 bg-gray-100 rounded">CACHING_QUICK_START.md</code>
+            <code className="mx-2 px-2 py-1 bg-gray-100 rounded">docs/features/CACHING_QUICK_START.md</code>
           </p>
         </div>
       </div>

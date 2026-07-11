@@ -12,7 +12,7 @@
 - Manual database operations bypassed the triggers
 
 **Solution:**
-- Created a SQL script (`fix-vote-counts.sql`) to recalculate all vote counts from the votes table
+- Created a SQL script (`sql/fixes/fix-vote-counts.sql`) to recalculate all vote counts from the votes table
 - The script updates the `votes_count` field to match the actual count of votes
 
 **Action Required:**
@@ -27,7 +27,7 @@ SET votes_count = (
 ```
 
 **Files Modified:** 
-- Created: `fix-vote-counts.sql`
+- Created: `sql/fixes/fix-vote-counts.sql`
 
 ---
 
@@ -122,7 +122,7 @@ if (loading) { ... }
 
 After deploying these changes, verify:
 
-- [ ] Run the `fix-vote-counts.sql` script in Supabase SQL Editor
+- [ ] Run the `sql/fixes/fix-vote-counts.sql` script in Supabase SQL Editor
 - [ ] Verify vote counts are correct on all launches
 - [ ] Check that views increment correctly when visiting launch pages
 - [ ] Navigate to user profiles (e.g., `/profile/username`) and verify no errors

@@ -56,7 +56,7 @@ useEffect(() => {
 ### 2. Created an Atomic View Increment Function
 Created a PostgreSQL function to increment views atomically (prevents race conditions):
 
-**File:** `increment-views-function.sql`
+**File:** `sql/migrations/increment-views-function.sql`
 ```sql
 CREATE OR REPLACE FUNCTION increment_launch_views(launch_slug TEXT)
 RETURNS void AS $$
@@ -104,7 +104,7 @@ const { data } = await supabase.from('launches').select(...).single()
 ### Step 1: Run the SQL Function
 1. Go to your Supabase project
 2. Open the SQL Editor
-3. Run the contents of `increment-views-function.sql`
+3. Run the contents of `sql/migrations/increment-views-function.sql`
 4. Verify it executed successfully
 
 ### Step 2: Test
@@ -126,11 +126,11 @@ ORDER BY views_count DESC;
 ## Files Modified
 
 1. ✅ `app/launch/[id]/page.tsx` - Fixed infinite loop and implemented RPC call
-2. ✅ `increment-views-function.sql` - Created atomic increment function
+2. ✅ `sql/migrations/increment-views-function.sql` - Created atomic increment function
 
 ## Testing Checklist
 
-- [ ] Run `increment-views-function.sql` in Supabase SQL Editor
+- [ ] Run `sql/migrations/increment-views-function.sql` in Supabase SQL Editor
 - [ ] Visit a launch page - views should increment by 1
 - [ ] Refresh the same page - views should increment again
 - [ ] Visit a different launch page - views should increment
