@@ -34,7 +34,7 @@ export default function RootLayout({
         }} />
       </head>
       <body
-        className={`${inter.variable} editorial font-sans antialiased bg-white text-black selection:bg-uw-purple selection:text-white md:cursor-none`}
+        className={`${inter.variable} editorial font-sans antialiased bg-white text-black selection:bg-uw-purple selection:text-white`}
       >
         <EditorialShell>{children}</EditorialShell>
         <Toaster

@@ -69,12 +69,6 @@ a {
   .marquee-track {
     animation: marquee 30s linear infinite;
   }
-
-  @media (max-width: 767px) {
-    .editorial {
-      cursor: auto;
-    }
-  }
 }
 
 @keyframes marquee {

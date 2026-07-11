@@ -46,8 +46,8 @@ export default function EditorialHeader() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 mix-blend-difference px-6 py-6 md:px-24">
-        <div className="flex items-center justify-between text-white">
+      <header className="fixed inset-x-0 top-0 z-50 px-6 py-6 md:px-24">
+        <div className="flex items-center justify-between text-black">
           <Link
             href="/"
             className="text-2xl font-bold tracking-tighter"
