@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import toast from 'react-hot-toast'
 
@@ -11,7 +11,7 @@ export default function LoginPage() {
   const router = useRouter()
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   })
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -19,11 +19,11 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    
+
     const supabase = createClient()
-    
+
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       })
@@ -34,7 +34,7 @@ export default function LoginPage() {
         toast.success('Welcome back!')
         router.push('/')
       }
-    } catch (error) {
+    } catch {
       toast.error('Something went wrong. Please try again.')
     } finally {
       setIsLoading(false)
@@ -42,119 +42,109 @@ export default function LoginPage() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }))
   }
 
   return (
-    <div className="min-h-screen bg-white pt-28">      
-      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <div className="text-center">
-            <div className="mx-auto w-16 h-16 bg-gradient-to-r from-uw-purple to-uw-gold rounded-2xl flex items-center justify-center">
-              <span className="text-white font-bold text-2xl">D</span>
-            </div>
-            <h2 className="mt-6 text-3xl font-bold text-black">
-              Welcome back to DubLaunch
-            </h2>
-            <p className="mt-2 text-sm text-neutral-600">
-              Sign in to discover and launch amazing projects
-            </p>
-          </div>
+    <div className="min-h-screen bg-white pt-28 pb-16">
+      <div className="mx-auto w-full max-w-xl px-6 sm:px-8">
+        <div className="mb-10 text-center">
+          <p className="editorial-mono mb-4 text-uw-purple">Sign In</p>
+          <h1 className="editorial-heading mb-4">Welcome back</h1>
+          <p className="editorial-subheading">
+            Sign in to discover and launch amazing projects from the UW community.
+          </p>
+        </div>
 
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="space-y-4">
+        <div className="card md:p-10">
+          <form className="space-y-10" onSubmit={handleSubmit}>
+            <div className="space-y-8">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-neutral-600 mb-1">
+                <label htmlFor="email" className="editorial-mono mb-3 block text-neutral-500">
                   Email Address
                 </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5 pointer-events-none" />
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="w-full pl-10 pr-4 py-2 border border-black/10 focus:outline-none focus:border-uw-purple outline-none"
-                    placeholder="your.email@uw.edu"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="input-field"
+                  placeholder="yournetid@uw.edu"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-neutral-600 mb-1">
+                <label htmlFor="password" className="editorial-mono mb-3 block text-neutral-500">
                   Password
                 </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5 pointer-events-none" />
+                <div className="relative border-b border-black/10 focus-within:border-uw-purple transition-colors duration-300">
                   <input
                     id="password"
                     name="password"
                     type={showPassword ? 'text' : 'password'}
                     autoComplete="current-password"
                     required
-                    className="w-full pl-10 pr-12 py-2 border border-black/10 focus:outline-none focus:border-uw-purple outline-none"
+                    className="w-full bg-transparent py-3 pr-10 text-base outline-none placeholder:text-neutral-400"
                     placeholder="Enter your password"
                     value={formData.password}
                     onChange={handleChange}
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 text-neutral-400 transition-colors hover:text-black"
                     onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
+            <div className="flex items-center justify-between gap-4">
+              <label htmlFor="remember-me" className="flex cursor-pointer items-center gap-2 text-sm text-neutral-600">
                 <input
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-uw-purple focus:ring-uw-purple border-gray-300 rounded"
+                  className="h-4 w-4 border-black/10 text-uw-purple focus:ring-uw-purple"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-black">
-                  Remember me
-                </label>
-              </div>
+                Remember me
+              </label>
 
-              <div className="text-sm">
-                <Link href="/auth/forgot-password" className="text-uw-purple hover:text-uw-purple/80">
-                  Forgot your password?
-                </Link>
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-uw-purple hover:bg-uw-purple/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-uw-purple disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              <Link
+                href="/auth/forgot-password"
+                className="editorial-mono text-neutral-500 transition-colors hover:text-uw-purple"
               >
-                {isLoading ? 'Signing in...' : 'Sign in'}
-              </button>
+                Forgot password?
+              </Link>
             </div>
 
-            <div className="text-center">
-              <p className="text-sm text-neutral-600">
-                Don't have an account?{' '}
-                <Link href="/auth/register" className="text-uw-purple hover:text-uw-purple/80 font-medium">
-                  Sign up for DubLaunch
-                </Link>
-              </p>
-            </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isLoading ? 'Signing in...' : 'Sign in'}
+            </button>
           </form>
-
         </div>
+
+        <p className="mt-8 text-center text-sm text-neutral-600">
+          Don&apos;t have an account?{' '}
+          <Link
+            href="/auth/register"
+            className="font-medium text-uw-purple transition-colors hover:text-uw-purple/80"
+          >
+            Join DubLaunch
+          </Link>
+        </p>
       </div>
     </div>
   )
