@@ -6,9 +6,9 @@ import { ArrowRight } from 'lucide-react'
 import StaggeredText from './StaggeredText'
 
 const STATS = [
-  { value: '11+', label: 'Projects Launched' },
-  { value: '24+', label: 'UW Students' },
-  { value: '20+', label: 'Total Votes' },
+  { value: '13+', label: 'Projects Launched' },
+  { value: '25+', label: 'DubLaunchers' },
+  { value: '500K+', label: 'Raised by DubLaunchers' },
 ]
 
 export default function HomeHero() {
