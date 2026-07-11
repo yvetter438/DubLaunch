@@ -17,10 +17,10 @@ function MarqueeCard({ launch, index }: { launch: HomeLaunch; index: number }) {
   return (
     <Link
       href={`/launch/${launch.slug}`}
-      className={`group relative mx-3 w-[220px] shrink-0 overflow-hidden md:w-[280px] ${radius}`}
+      className="group relative mx-3 w-[220px] shrink-0 md:w-[280px]"
       data-cursor-hover
     >
-      <div className="relative aspect-[5/7] overflow-hidden bg-neutral-100">
+      <div className={`relative aspect-[5/7] overflow-hidden bg-neutral-100 ${radius}`}>
         {launch.thumbnail_url ? (
           <Image
             src={launch.thumbnail_url}
