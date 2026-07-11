@@ -18,7 +18,9 @@ export interface HomeLaunch {
   }
 }
 
-export function useHomeLaunches(limit = 8) {
+type HomeLaunchesSort = 'newest' | 'featured'
+
+export function useHomeLaunches(limit = 8, sort: HomeLaunchesSort = 'featured') {
   const [launches, setLaunches] = useState<HomeLaunch[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -26,7 +28,7 @@ export function useHomeLaunches(limit = 8) {
     const fetchLaunches = async () => {
       try {
         const supabase = createClient()
-        const { data, error } = await supabase
+        let query = supabase
           .from('launches')
           .select(`
             id,
@@ -43,9 +45,16 @@ export function useHomeLaunches(limit = 8) {
             )
           `)
           .eq('status', 'published')
-          .order('votes_count', { ascending: false })
-          .order('created_at', { ascending: false })
-          .limit(limit)
+
+        if (sort === 'newest') {
+          query = query.order('created_at', { ascending: false })
+        } else {
+          query = query
+            .order('votes_count', { ascending: false })
+            .order('created_at', { ascending: false })
+        }
+
+        const { data, error } = await query.limit(limit)
 
         if (error) throw error
         setLaunches((data || []) as unknown as HomeLaunch[])
@@ -57,7 +66,7 @@ export function useHomeLaunches(limit = 8) {
     }
 
     fetchLaunches()
-  }, [limit])
+  }, [limit, sort])
 
   return { launches, loading }
 }

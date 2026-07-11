@@ -6,7 +6,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { useHomeLaunches } from './useHomeLaunches'
 
 export default function HomeProjectGrid() {
-  const { launches, loading } = useHomeLaunches(6)
+  const { launches, loading } = useHomeLaunches(6, 'newest')
 
   return (
     <section className="border-t border-black/10 px-6 py-24 md:px-24">
